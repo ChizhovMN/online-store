@@ -6,8 +6,6 @@
             "album": "Does This Look Infected?",
             "year": 2002,
             "price": 9.99,
-            "rating": 4.85,
-            "stock": 10,
             "category": "punk rock",
             "trackList": [
                 "The Hell Song",
@@ -36,8 +34,6 @@
             "album": "Americana",
             "year": 1998,
             "price": 12.99,
-            "rating": 4.90,
-            "stock": 4,
             "category": "punk rock",
             "trackList": [
                 "Welcome",
@@ -67,8 +63,6 @@
             "album": "Hooray for Boobies",
             "year": 1999,
             "price": 8.99,
-            "rating": 4.95,
-            "stock": 7,
             "category": "alternative rock",
             "trackList": [
                 "I Hope You Die",
@@ -104,8 +98,6 @@
             "album": "American Idiot",
             "year": 2004,
             "price": 10.99,
-            "rating": 4.85,
-            "stock": 10,
             "category": "punk rock",
             "trackList": [
                 "American Idiot",
@@ -135,8 +127,6 @@
             "album": "Three Days Grace",
             "year": 2003,
             "price": 9.99,
-            "rating": 4.65,
-            "stock": 3,
             "category": "alternative rock",
             "trackList": [
                 "Burn",
@@ -165,8 +155,6 @@
             "album": "Human",
             "year": 2015,
             "price": 11.88,
-            "rating": 4.20,
-            "stock": 6,
             "category": "alternative rock",
             "trackList": [
                 "Human Race",
@@ -194,8 +182,6 @@
             "album": "Billy Talent II",
             "year": 2006,
             "price": 9.99,
-            "rating": 4.90,
-            "stock": 3,
             "category": "punk rock",
             "trackList": [
                 "Devil in a Midnight Mass",
@@ -228,8 +214,6 @@
             "album": "Toxicity",
             "year": 2001,
             "price": 14.99,
-            "rating": 4.99,
-            "stock": 3,
             "category": "nu metal",
             "trackList": [
                 "Prison Song",
@@ -260,8 +244,6 @@
             "album": "Enema of the State",
             "year": 1999,
             "price": 13.99,
-            "rating": 4.90,
-            "stock": 2,
             "category": "pop punk",
             "trackList": [
                 "Dumpweed",
@@ -290,8 +272,6 @@
             "album": "Sehnsucht",
             "year": 1997,
             "price": 12.99,
-            "rating": 4.95,
-            "stock": 11,
             "category": "indastrial metal",
             "trackList": [
                 "Sehnsucht",
@@ -319,8 +299,6 @@
             "album": "Rammstein",
             "year": 2019,
             "price": 14.99,
-            "rating": 5.00,
-            "stock": 3,
             "category": "indastrial metal",
             "trackList": [
                 "Deutschland",
@@ -348,8 +326,6 @@
             "album": "Vol.3: The Subliminal Verses",
             "year": 2004,
             "price": 9.99,
-            "rating": 4.50,
-            "stock": 16,
             "category": "nu metal",
             "trackList": [
                 "Prelude 3.0",
@@ -382,8 +358,6 @@
             "album": "Faceless",
             "year": 2003,
             "price": 7.99,
-            "rating": 4.30,
-            "stock": 6,
             "category": "nu metal",
             "trackList": [
                 "Straight Out of Line",
@@ -411,8 +385,6 @@
             "album": "Reign in Blood",
             "year": 1986,
             "price": 9.99,
-            "rating": 4.80,
-            "stock": 2,
             "category": "thrash metal",
             "trackList": [
                 "Angel of Death",
@@ -439,8 +411,6 @@
             "album": "Repentless",
             "year": 2015,
             "price": 12.99,
-            "rating": 4.55,
-            "stock": 5,
             "category": "thrash metal",
             "trackList": [
                 "Delusions of Saviour",
@@ -469,8 +439,6 @@
             "album": "Repentless",
             "year": 2015,
             "price": 12.99,
-            "rating": 4.55,
-            "stock": 5,
             "category": "thrash metal",
             "trackList": [
                 "Delusions of Saviour",
@@ -499,8 +467,6 @@
             "album": "Coherence",
             "year": 2021,
             "price": 19.99,
-            "rating": 5.00,
-            "stock": 16,
             "category": "melodic death metal",
             "trackList": [
                 "Locus",
@@ -525,8 +491,6 @@
             "album": "Dreams of Endless War",
             "year": 2001,
             "price": 8.99,
-            "rating": 4.30,
-            "stock": 6,
             "category": "melodic death metal",
             "trackList": [
                 "Darkest Time",
@@ -553,8 +517,6 @@
             "album": "Moment",
             "year": 2020,
             "price": 17.99,
-            "rating": 5.00,
-            "stock": 10,
             "category": "melodic death metal",
             "trackList": [
                 "Phantom Days",
