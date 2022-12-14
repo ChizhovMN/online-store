@@ -1,0 +1,22 @@
+.footer-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    padding: 10px;
+    gap: 10px;
+}
+
+.github-image {
+    height: 80px;
+    width: 100%;
+}
+
+.rss-image {
+    width: 80px;
+}
+
+.github-wrapper {
+    display: flex;
+    align-items: center;
+}

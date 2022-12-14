@@ -14,8 +14,8 @@ const baseConfig = {
                 test: /\.css$/i,
                 use: ['style-loader', 'css-loader'],
             },
-            { 
-                test: /\.ts$/i, use: 'ts-loader' 
+            {
+                test: /\.ts$/i, use: 'ts-loader'
             },
             {
                 test: /.(html)$/,
@@ -40,8 +40,8 @@ const baseConfig = {
         new CopyPlugin({
             patterns: [
                 {
-                    from: path.resolve(__dirname, 'src', 'assets', 'img'),
-                    to: path.resolve(__dirname, 'dist', 'assets', 'img'),
+                    from: path.resolve(__dirname, 'src', 'assets', 'images'),
+                    to: path.resolve(__dirname, 'dist', 'assets', 'images'),
                 },
             ],
         }),
