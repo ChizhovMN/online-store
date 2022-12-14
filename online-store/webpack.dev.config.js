@@ -6,9 +6,6 @@ module.exports = {
     devServer: {
         watchFiles: path.resolve(__dirname, '../dist'),
         port: 3000,
-        historyApiFallback: true,
-        // historyApiFallback: {
-        //     index: './../index.html'
-        //   }
+        historyApiFallback: true
     },
 };

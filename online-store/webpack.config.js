@@ -28,7 +28,6 @@ const baseConfig = {
     },
     output: {
         filename: 'index.js',
-        // publicPath: "/",
         path: path.resolve(__dirname, 'dist'),
     },
     plugins: [
