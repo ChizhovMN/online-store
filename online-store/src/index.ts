@@ -23,24 +23,24 @@ const route = function (event: Event): void {
 
 const routes: routeOptions = {
     '404': './pages/404/error.html',
+    '/': './index.html',
     '/main': './pages/main/main.html',
     '/cart': './pages/cart/cart.html',
     '/product': './pages/product/product.html'
 }
 
 const changeLocation = async function (): Promise<void> {
-    let path: string = window.location.pathname;
-    console.log('path', path);
-    if (path === '/') {
-        path = '/main';
-        window.history.pushState({}, '', path);
-    }
-    console.log(window.history, window.history.state);
+    const path: string = window.location.pathname;
+    // if (path === '/') {
+    //     path = '/main';
+    //     window.history.pushState({}, '', path);
+    // }
+    console.log(window.location.pathname)
     const route: string | undefined = routes[path] || routes['404'];
+    if(route === './index.html') return
     if (route && !route.includes('404')) {
         const appendItem: Response = await fetch(route);
         const data = await appendItem.text();
-        console.log(data);
         if (mainPage instanceof Element) {
             mainPage.innerHTML = data;
         }
