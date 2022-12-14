@@ -34,9 +34,7 @@ const changeLocation = async function (): Promise<void> {
         path = '/';
     }
     const route: string | undefined = routes[path] || routes['404'];
-    
-    if(route === './index.html') return
-    
+        
     if (route && !route.includes('404')) {
         const appendItem: Response = await fetch(route);
         const data = await appendItem.text();
