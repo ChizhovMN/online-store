@@ -1,10 +1,12 @@
 import './assets/styles/normalize.css';
 import './assets/styles/header.css';
 import './assets/styles/footer.css';
+import './pages/main/main.css';
 import './global.css';
 import { routeOptions, elOrNull } from './pages/types'
-import { loadJSON } from './pages/loadJSON';
-
+import { Shop } from './pages/main/main';
+import { items, loadJSON } from './pages/loadJSON';
+loadJSON();
 const mainPage: elOrNull = document.getElementById('main-page');
 const mainLink: elOrNull = document.getElementById('main');
 const cartLink: elOrNull = document.getElementById('cart');
@@ -37,10 +39,13 @@ const changeLocation = async function (): Promise<void> {
     const route: string | undefined = routes[path] || routes['404'];
 
     if (route && !route.includes('404')) {
+
         const appendItem: Response = await fetch(route);
         const data = await appendItem.text();
         if (mainPage instanceof Element) {
             mainPage.innerHTML = data;
+            const shop = new Shop();
+            shop.drawItems(items.products);
         }
     }
 }
@@ -50,4 +55,6 @@ changeLocation();
 cartLink?.addEventListener('click', route);
 mainLink?.addEventListener('click', route);
 
-loadJSON();
+// const shopPage: elOrNull = document.getElementById('shop-page');
+// const shopTable = document.createElement('div');
+// shopPage?.appendChild(shopTable);
