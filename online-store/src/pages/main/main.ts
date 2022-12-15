@@ -11,16 +11,20 @@ export class Shop {
             item.classList.add('table-item');
             item.id = String(element.id);
 
+            const figure = document.createElement('figure');
+            figure.classList.add('figure-item');
+
             const img = document.createElement('img');
             img.classList.add('table-image');
             img.src = element.thumbnail;
-            item.appendChild(img);
+            img.alt = 'music';
 
-            const description = document.createElement('div');
+            const description = document.createElement('figcaption');
             description.classList.add('item-description');
             description.textContent = element.group + ' - ' + element.album;
-            item.appendChild(description);
-
+            figure.appendChild(img);
+            figure.appendChild(description);
+            item.appendChild(figure);
             const year = document.createElement('div');
             year.classList.add('item-year');
             year.textContent = String(element.year);
