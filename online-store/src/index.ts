@@ -22,33 +22,28 @@ const route = function (event: Event): void {
 }
 
 const routes: routeOptions = {
-    '404': './pages/404/error.html',
-    '/main': './pages/main/main.html',
-    '/cart': './pages/cart/cart.html',
-    '/product': './pages/product/product.html'
+    404: './pages/404/error.html',
+    '/': './pages/main/main.html', // <-- There is main page!
+    cart: './pages/cart/cart.html',
+    product: './pages/product/product.html'
 }
 
 const changeLocation = async function (): Promise<void> {
-    let path: string = window.location.pathname;
-    console.log('path', path);
-    if (path === '/') {
-        path = '/main';
-        window.history.pushState({}, '', path);
+    let path: string = window.location.hash.replace('#', '');
+    if (path.length === 0){
+        path = '/';
     }
-    console.log(window.history, window.history.state);
     const route: string | undefined = routes[path] || routes['404'];
+        
     if (route && !route.includes('404')) {
         const appendItem: Response = await fetch(route);
         const data = await appendItem.text();
-        console.log(data);
         if (mainPage instanceof Element) {
             mainPage.innerHTML = data;
         }
     }
 }
 window.onpopstate = changeLocation;
-//:TODO FIX ROUTE PROBLEM WITH REFRESH WEB PAGES
-// window.route = route;
 changeLocation();
 
 cartLink?.addEventListener('click', route);
