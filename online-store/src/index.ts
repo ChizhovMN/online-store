@@ -3,6 +3,7 @@ import './assets/styles/header.css';
 import './assets/styles/footer.css';
 import './global.css';
 import { routeOptions, elOrNull } from './pages/types'
+import { loadJSON } from './pages/loadJSON';
 
 const mainPage: elOrNull = document.getElementById('main-page');
 const mainLink: elOrNull = document.getElementById('main');
@@ -30,11 +31,11 @@ const routes: routeOptions = {
 
 const changeLocation = async function (): Promise<void> {
     let path: string = window.location.hash.replace('#', '');
-    if (path.length === 0){
+    if (path.length === 0) {
         path = '/';
     }
     const route: string | undefined = routes[path] || routes['404'];
-        
+
     if (route && !route.includes('404')) {
         const appendItem: Response = await fetch(route);
         const data = await appendItem.text();
@@ -49,3 +50,4 @@ changeLocation();
 cartLink?.addEventListener('click', route);
 mainLink?.addEventListener('click', route);
 
+loadJSON();

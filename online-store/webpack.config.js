@@ -44,9 +44,14 @@ const baseConfig = {
                     to: path.resolve(__dirname, 'dist', 'assets', 'images'),
                 },
                 {
+                    from: path.resolve(__dirname, 'src', 'assets', 'json'),
+                    to: path.resolve(__dirname, 'dist', 'assets', 'json'),
+                },
+                {
                     from: path.resolve(__dirname, 'src', 'pages'),
                     to: path.resolve(__dirname, 'dist', 'pages'),
                 },
+
             ],
         }),
     ],
