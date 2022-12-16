@@ -3,9 +3,11 @@ import './assets/styles/header.css';
 import './assets/styles/footer.css';
 import './pages/main/main.css';
 import './global.css';
+import './pages/404/error.css'
 import { routeOptions, elOrNull } from './pages/types'
 import { Shop } from './pages/main/main';
 import { items, loadJSON } from './pages/loadJSON';
+
 loadJSON();
 const mainPage: elOrNull = document.getElementById('main-page');
 const mainLink: elOrNull = document.getElementById('main');
@@ -38,7 +40,7 @@ const changeLocation = async function (): Promise<void> {
     }
     const route: string | undefined = routes[path] || routes['404'];
 
-    if (route && !route.includes('404')) {
+    if (route) {
 
         const appendItem: Response = await fetch(route);
         const data = await appendItem.text();
@@ -54,7 +56,3 @@ changeLocation();
 
 cartLink?.addEventListener('click', route);
 mainLink?.addEventListener('click', route);
-
-// const shopPage: elOrNull = document.getElementById('shop-page');
-// const shopTable = document.createElement('div');
-// shopPage?.appendChild(shopTable);
