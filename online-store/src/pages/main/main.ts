@@ -37,7 +37,6 @@ export class Shop {
             item.appendChild(price);
 
             shopTable.appendChild(item);
-            console.log('true', element.album, element.category)
         });
         shopPage?.appendChild(shopTable);
     }
