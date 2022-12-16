@@ -1,0 +1,10 @@
+.error-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.error-image {
+    max-width: 640px;
+    width: 100%;
+}
