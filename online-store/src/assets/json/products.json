@@ -6,7 +6,8 @@
             "album": "Does This Look Infected?",
             "year": 2002,
             "price": 9.99,
-            "category": "punk rock",
+            "format": "CD",
+            "category": "Punk Rock",
             "trackList": [
                 "The Hell Song",
                 "Over My Head (Better Off Dead)",
@@ -34,7 +35,8 @@
             "album": "Americana",
             "year": 1998,
             "price": 12.99,
-            "category": "punk rock",
+            "format": "CD",
+            "category": "Punk Rock",
             "trackList": [
                 "Welcome",
                 "Have You Ever",
@@ -63,7 +65,8 @@
             "album": "Hooray for Boobies",
             "year": 1999,
             "price": 8.99,
-            "category": "alternative rock",
+            "format": "CD",
+            "category": "Alternative Rock",
             "trackList": [
                 "I Hope You Die",
                 "The Inevitable Return of the Great White Dope",
@@ -98,7 +101,8 @@
             "album": "American Idiot",
             "year": 2004,
             "price": 10.99,
-            "category": "punk rock",
+            "format": "CD",
+            "category": "Punk Rock",
             "trackList": [
                 "American Idiot",
                 "Jesus of Suburbia",
@@ -127,7 +131,8 @@
             "album": "Three Days Grace",
             "year": 2003,
             "price": 9.99,
-            "category": "alternative rock",
+            "format": "CD",
+            "category": "Alternative Rock",
             "trackList": [
                 "Burn",
                 "Just Like You",
@@ -155,7 +160,8 @@
             "album": "Human",
             "year": 2015,
             "price": 11.88,
-            "category": "alternative rock",
+            "format": "CD",
+            "category": "Alternative Rock",
             "trackList": [
                 "Human Race",
                 "Painkiller",
@@ -182,7 +188,8 @@
             "album": "Billy Talent II",
             "year": 2006,
             "price": 9.99,
-            "category": "punk rock",
+            "format": "CD",
+            "category": "Punk Rock",
             "trackList": [
                 "Devil in a Midnight Mass",
                 "Red Flag",
@@ -214,7 +221,8 @@
             "album": "Toxicity",
             "year": 2001,
             "price": 14.99,
-            "category": "nu metal",
+            "format": "CD",
+            "category": "Nu Metal",
             "trackList": [
                 "Prison Song",
                 "Needles",
@@ -244,7 +252,8 @@
             "album": "Enema of the State",
             "year": 1999,
             "price": 13.99,
-            "category": "pop punk",
+            "format": "CD",
+            "category": "Pop Punk",
             "trackList": [
                 "Dumpweed",
                 "Don't Leave Me",
@@ -272,7 +281,8 @@
             "album": "Sehnsucht",
             "year": 1997,
             "price": 12.99,
-            "category": "indastrial metal",
+            "format": "CD",
+            "category": "Indastrial Metal",
             "trackList": [
                 "Sehnsucht",
                 "Engel",
@@ -299,7 +309,8 @@
             "album": "Rammstein",
             "year": 2019,
             "price": 14.99,
-            "category": "indastrial metal",
+            "format": "CD",
+            "category": "Indastrial Metal",
             "trackList": [
                 "Deutschland",
                 "Radio",
@@ -326,7 +337,8 @@
             "album": "Vol.3: The Subliminal Verses",
             "year": 2004,
             "price": 9.99,
-            "category": "nu metal",
+            "format": "CD",
+            "category": "Nu Metal",
             "trackList": [
                 "Prelude 3.0",
                 "The Blister Exists",
@@ -358,7 +370,8 @@
             "album": "Faceless",
             "year": 2003,
             "price": 7.99,
-            "category": "nu metal",
+            "format": "CD",
+            "category": "Nu Metal",
             "trackList": [
                 "Straight Out of Line",
                 "Faceless",
@@ -385,7 +398,8 @@
             "album": "Reign in Blood",
             "year": 1986,
             "price": 9.99,
-            "category": "thrash metal",
+            "format": "CD",
+            "category": "Thrash Metal",
             "trackList": [
                 "Angel of Death",
                 "Piece by Piece",
@@ -411,7 +425,8 @@
             "album": "Repentless",
             "year": 2015,
             "price": 12.99,
-            "category": "thrash metal",
+            "format": "CD",
+            "category": "Thrash Metal",
             "trackList": [
                 "Delusions of Saviour",
                 "Repentless",
@@ -439,7 +454,8 @@
             "album": "Repentless",
             "year": 2015,
             "price": 12.99,
-            "category": "thrash metal",
+            "format": "CD",
+            "category": "Thrash Metal",
             "trackList": [
                 "Delusions of Saviour",
                 "Repentless",
@@ -467,7 +483,8 @@
             "album": "Coherence",
             "year": 2021,
             "price": 19.99,
-            "category": "melodic death metal",
+            "format": "CD",
+            "category": "Melodic Death Metal",
             "trackList": [
                 "Locus",
                 "The Dispersion",
@@ -491,7 +508,8 @@
             "album": "Dreams of Endless War",
             "year": 2001,
             "price": 8.99,
-            "category": "melodic death metal",
+            "format": "CD",
+            "category": "Melodic Death Metal",
             "trackList": [
                 "Darkest Time",
                 "Last Breath",
@@ -517,7 +535,8 @@
             "album": "Moment",
             "year": 2020,
             "price": 17.99,
-            "category": "melodic death metal",
+            "format": "CD",
+            "category": "Melodic Death Metal",
             "trackList": [
                 "Phantom Days",
                 "Transient",
@@ -545,9 +564,8 @@
             "album": "Deathcrush",
             "year": 1993,
             "price": 12.99,
-            "rating": 5.00,
-            "stock": 4,
-            "category": "black metal",
+            "format": "CD",
+            "category": "Black Metal",
             "trackList": [
                 "Silvester Anfang",
                 "Deathcrush",
@@ -562,6 +580,586 @@
                 "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSS7CvaVOXGW17b9OMBK9hDO-4KPLICInLMzw&usqp=CAU",
                 "https://m.media-amazon.com/images/I/41-eznHpD5L._SY350_.jpg",
                 "https://upload.wikimedia.org/wikipedia/ru/2/20/DeathcrushEP.jpg"
+            ]
+        },
+        {
+            "id": 21,
+            "group": "Amy Winehouse",
+            "album": "Back To Black",
+            "year": 2018,
+            "price": 62.99,
+            "format": "CD",
+            "category": "R&B",
+            "trackList": [
+                "Rehab",
+                "You Know I'm No Good",
+                "Me & Mr Jones",
+                "Just Friends",
+                "Back To Black",
+                "Love Is A Losing Game",
+                "Tears Dry On Their Own",
+                "Wake Up Alone",
+                "Some Unholy War",
+                "He Can Only Hold Her",
+                "Addicted"
+            ],
+            "thumbnail": "https://thumb.tildacdn.com/tild3238-3435-4437-b631-333866393535/-/format/webp/amy-winehouse-back-t.jpg",
+            "images": [
+                "https://thumb.tildacdn.com/tild3238-3435-4437-b631-333866393535/-/format/webp/amy-winehouse-back-t.jpg",
+                "https://thumb.tildacdn.com/tild3037-3363-4765-a239-333037306265/-/format/webp/AMY1.jpg",
+                "https://thumb.tildacdn.com/tild6363-6161-4962-a133-386130393531/-/format/webp/604732-large-amy-win.jpg"
+            ]
+        },
+        {
+            "id": 22,
+            "group": "Imagine Dragons",
+            "album": "Evolve",
+            "year": 2017,
+            "price": 63.99,
+            "format": "CD",
+            "category": "R&B",
+            "trackList": [
+                "I Don't Know Why",
+                "Whatever It Takes",
+                "Believer",
+                "Walking The Wire",
+                "Rise Up",
+                "I'll Make It Up To You",
+                "Yesterday",
+                "Mouth Of The River",
+                "Thunder",
+                "Start Over",
+                "Dancing In The Dark"
+            ],
+            "thumbnail": "https://thumb.tildacdn.com/tild3966-6363-4230-b735-636662643135/-/format/webp/71v1pBcehfL_SL1400_.jpg",
+            "images": [
+                "https://thumb.tildacdn.com/tild3966-6363-4230-b735-636662643135/-/format/webp/71v1pBcehfL_SL1400_.jpg",
+                "https://thumb.tildacdn.com/tild6165-3564-4666-b330-643730363164/-/format/webp/Imagine_Dragins_Evol.jpg",
+                "https://thumb.tildacdn.com/tild6334-3037-4861-a362-313739376232/-/format/webp/imagine-dragons-evol.jpg"
+            ]
+        },
+        {
+            "id": 23,
+            "group": "AC/DC",
+            "album": "Back in Black",
+            "year": 2009,
+            "price": 60.99,
+            "format": "CD",
+            "category": "Rock",
+            "trackList": [
+                "Hells Bells",
+                "Shoot To Thrill",
+                "What Do You Do For Money Honey",
+                "Givin The Dog A Bone",
+                "Let Me Put My Love Into You",
+                "Back In Black",
+                "You Shook Me All Night Long",
+                "Have A Drink On Me",
+                "Shake A Leg",
+                "Rock And Roll Ain't Noise Pollution"
+            ],
+            "thumbnail": "https://thumb.tildacdn.com/tild3966-6433-4563-b233-316131326436/-/format/webp/ACDC_Back_in_Black.png",
+            "images": [
+                "https://thumb.tildacdn.com/tild3966-6433-4563-b233-316131326436/-/format/webp/ACDC_Back_in_Black.png",
+                "https://thumb.tildacdn.com/tild6563-6662-4336-a435-316535353431/-/format/webp/Back_In_Black.jpg",
+                "https://thumb.tildacdn.com/tild3733-3835-4136-b035-323434666235/-/format/webp/acdc_back_in_black_r.jpg"
+            ]
+        },
+        {
+            "id": 24,
+            "group": "Muse",
+            "album": "Simulation Theory",
+            "year": 2018,
+            "price": 61.99,
+            "format": "CD",
+            "category": "Rock",
+            "trackList": [
+                "Algorithm",
+                "The Dark Side",
+                "Pressure",
+                "Propaganda",
+                "Break It To Me",
+                "Something Human",
+                "Thought Contagion",
+                "Get Up and Fight",
+                "Blockades",
+                "Dig Down",
+                "The Void"
+            ],
+            "thumbnail": "https://thumb.tildacdn.com/tild3539-6366-4530-a363-313739306364/-/format/webp/R-12779155-154189085.jpg",
+            "images": [
+                "https://thumb.tildacdn.com/tild3539-6366-4530-a363-313739306364/-/format/webp/R-12779155-154189085.jpg",
+            ]
+        },
+        {
+            "id": 25,
+            "group": "Linkin Park",
+            "album": "Meteora",
+            "year": 2016,
+            "price": 63.49,
+            "format": "CD",
+            "category": "Rock",
+            "trackList": [
+                "Foreword",
+                "Don't Stay",
+                "Somewhere I Belong",
+                "Lying From You",
+                "Hit The Floor",
+                "Easier To Run",
+                "Faint",
+                "Figure.09",
+                "Breaking The Habit",
+                "From The Inside",
+                "Nobody's Listening",
+                "Session",
+                "Numb"
+            ],
+            "thumbnail": "https://thumb.tildacdn.com/tild3761-3164-4766-b038-383339373862/-/format/webp/71-nhMkC-vL_SL1425_.jpg",
+            "images": [
+                "https://thumb.tildacdn.com/tild3761-3164-4766-b038-383339373862/-/format/webp/71-nhMkC-vL_SL1425_.jpg",
+                "https://thumb.tildacdn.com/tild3739-6533-4735-b463-633762333666/-/format/webp/LInkin_Park.jpg",
+                "https://thumb.tildacdn.com/tild3566-3639-4432-b238-356461623235/-/format/webp/linkin_park__meteora.jpg"
+            ]
+        },
+        {
+            "id": 26,
+            "group": "Kensington",
+            "album": "Control",
+            "year": 2016,
+            "price": 62.49,
+            "format": "CD",
+            "category": "Indie Rock",
+            "trackList": [
+                "Do I Ever",
+                "Fiji",
+                "Slicer",
+                "Regret",
+                "All Before You",
+                "Sorry",
+                "Control",
+                "Rely On",
+                "Bridges",
+                "Storms",
+                "St. Helena"
+                
+            ],
+            "thumbnail": "https://thumb.tildacdn.com/stor3561-6135-4363-b639-333735656239/-/format/webp/63116850.jpg",
+            "images": [
+                "https://thumb.tildacdn.com/stor3561-6135-4363-b639-333735656239/-/format/webp/63116850.jpg",
+                "https://thumb.tildacdn.com/stor6134-3561-4365-b165-336134623339/-/format/webp/73849239.jpg",
+                "https://thumb.tildacdn.com/stor3231-3236-4139-b038-376130393764/-/format/webp/48041593.jpg"
+            ]
+        },
+        {
+            "id": 27,
+            "group": "Lorde",
+            "album": "Solar Power",
+            "year": 2016,
+            "price": 61.49,
+            "format": "CD",
+            "category": "Indie Pop",
+            "trackList": [
+                "The Path",
+                "Solar Power",
+                "California",
+                "Stoned in the Nail Salon",
+                "Fallen Fruit",
+                "Secrets From a Girl (Who's Seen It All)",
+                "The Man with An Axe",
+                "Dominoes",
+                "Big Star",
+                "Leader of a New Regime",
+                "Mood Ring",
+                "Oceanic Feeling"
+                
+            ],
+            "thumbnail": "https://thumb.tildacdn.com/tild3465-6562-4131-b635-386533376166/-/format/webp/a6ppff-solarpower-pr.jpg",
+            "images": [
+                "https://thumb.tildacdn.com/tild3465-6562-4131-b635-386533376166/-/format/webp/a6ppff-solarpower-pr.jpg",
+                "https://thumb.tildacdn.com/tild3838-3038-4665-a264-656630303637/-/format/webp/Solar_Power.jpg",
+                "https://thumb.tildacdn.com/tild3936-3536-4336-b864-353836316266/-/format/webp/53462B905E32C420C2AF.jpg"
+            ]
+        },
+        {
+            "id": 28,
+            "group": "Queens Of The Stone Age",
+            "album": "Villains",
+            "year": 2017,
+            "price": 61.49,
+            "format": "CD",
+            "category": "Indie Rock",
+            "trackList": [
+                "Feet Don't Fail Me",
+                "The Way You Used To Do",
+                "Domesticated Animals",
+                "Fortress",
+                "Head Like A Haunted House",
+                "Un-Reborn Again",
+                "Hideaway",
+                "The Evil Has Landed",
+                "Villains Of Circumstance",
+                "Ethcing"
+            ],
+            "thumbnail": "https://thumb.tildacdn.com/tild6564-3961-4536-b632-333463666563/-/format/webp/4matlp11251-large__1.jpg",
+            "images": [
+                "https://thumb.tildacdn.com/tild6564-3961-4536-b632-333463666563/-/format/webp/4matlp11251-large__1.jpg",
+                "https://thumb.tildacdn.com/tild3034-6334-4430-b762-306439393136/-/format/webp/QOTSA.jpg",
+                "https://thumb.tildacdn.com/tild3631-3663-4463-b032-313265303833/-/format/webp/queens-of-the-stone-.jpg"
+            ]
+        },
+        {
+            "id": 29,
+            "group": "Arctic Monkeys",
+            "album": "AM",
+            "year": 2013,
+            "price": 62.49,
+            "format": "CD",
+            "category": "Indie Rock",
+            "trackList": [
+                "Do I Wanna Know?",
+                "R U Mine?",
+                "One for the Road",
+                "Arabella",
+                "I Want It All",
+                "No. 1 Party Anthem",
+                "Mad Sounds",
+                "Fireside",
+                "Why'd You Only Call Me When You're High?",
+                "Snap Out Of It",
+                "Knee Socks",
+                "I Wanna Be Yours"
+            ],
+            "thumbnail": "https://thumb.tildacdn.com/tild3632-3461-4161-b234-613662356236/-/format/webp/1.jpg",
+            "images": [
+                "https://thumb.tildacdn.com/tild3632-3461-4161-b234-613662356236/-/format/webp/1.jpg",
+                "https://thumb.tildacdn.com/tild6565-3732-4563-b164-343864383539/-/format/webp/AM.jpg",
+                "https://thumb.tildacdn.com/tild3932-3464-4164-b333-356665393537/-/format/webp/orig.jpg"
+            ]
+        }, 
+        {
+            "id": 30,
+            "group": "Alvvays",
+            "album": "Alvvays",
+            "year": 2020,
+            "price": 60.49,
+            "format": "CD",
+            "category": "Indie Rock",
+            "trackList": [
+                "Adult Diversion",
+                "Archie, Marry Me",
+                "Ones Who Love You",
+                "Next Of Kin",
+                "Party Police",
+                "The agency group",
+                "Dives",
+                "Atop a cake",
+                "Red planet"
+            ],
+            "thumbnail": "https://thumb.tildacdn.com/tild3438-3832-4231-b566-373138306638/-/format/webp/Alvvays_Alvvays.jpg",
+            "images": [
+                "https://thumb.tildacdn.com/tild3438-3832-4231-b566-373138306638/-/format/webp/Alvvays_Alvvays.jpg",
+                "https://thumb.tildacdn.com/tild3061-3636-4533-b831-623131366366/-/format/webp/Alvvays.jpg",
+                "https://thumb.tildacdn.com/tild6239-6361-4438-b234-353135303231/-/format/webp/278492988.jpg"
+            ]
+        },
+        {
+            "id": 31,
+            "group": "The Strokes",
+            "album": "Is This It",
+            "year": 2020,
+            "price": 59.99,
+            "format": "CD",
+            "category": "Indie Rock",
+            "trackList": [
+                "Is This It",
+                "The Modern Age",
+                "Soma",
+                "Barely Legal",
+                "Someday",
+                "Alone, Together",
+                "Last Nite",
+                "Hard To Explain",
+                "New York City Cops",
+                "Trying Your Luck",
+                "Take It Or Leave It"
+            ],
+            "thumbnail": "https://thumb.tildacdn.com/tild3737-6461-4566-b436-623837386436/-/format/webp/strokes-is-this-it_1.jpg",
+            "images": [
+                "https://thumb.tildacdn.com/tild3737-6461-4566-b436-623837386436/-/format/webp/strokes-is-this-it_1.jpg",
+                "https://thumb.tildacdn.com/tild6632-3239-4263-a561-643934306331/-/format/webp/Strokes.jpg",
+                "https://thumb.tildacdn.com/tild3839-6338-4434-a637-343031666233/-/format/webp/813DgwZzUPL_SL1500_.jpg"
+            ]
+        },
+        {
+            "id": 32,
+            "group": "Arctic Monkeys",
+            "album": "Tranquility Base Hotel & Casino",
+            "year": 2018,
+            "price": 61.99,
+            "format": "CD",
+            "category": "Indie Rock",
+            "trackList": [
+                "Star Treatment",
+                "One Point Perspective",
+                "American Sports",
+                "Tranquility Base Hotel & Casino",
+                "Golden Trunks",
+                "Four Out of Five",
+                "The World's First Ever Monster Truck Front Flip",
+                "Science Fiction",
+                "She Looks Like Fun",
+                "Batphone",
+                "The Ultracheese"
+            ],
+            "thumbnail": "https://thumb.tildacdn.com/tild3436-6236-4831-a133-636430663932/-/format/webp/81qR3UEqEzL_SL1200_.jpg",
+            "images": [
+                "https://thumb.tildacdn.com/tild3436-6236-4831-a133-636430663932/-/format/webp/81qR3UEqEzL_SL1200_.jpg",
+                "https://thumb.tildacdn.com/tild3737-3764-4134-b466-613635353133/-/format/webp/Tranquility.jpg",
+                "https://thumb.tildacdn.com/tild6463-3864-4766-b731-663333326634/-/format/webp/arctic_monkeys__tran.jpg"
+            ]
+        },
+        {
+            "id": 33,
+            "group": "Pink Floyd",
+            "album": "The Dark Side Of The Moon",
+            "year": 2018,
+            "price": 61.99,
+            "format": "CD",
+            "category": "Indie Rock",
+            "trackList": [
+                "Speak To Me",
+                "Breathe (In The Air)",
+                "On The Run",
+                "Time",
+                "The Great Gig In The Sky",
+                "Money",
+                "Us And Them",
+                "Any Colour You Like",
+                "Brain Damage",
+                "Eclipse"
+            ],
+            "thumbnail": "https://thumb.tildacdn.com/tild6161-6239-4134-a666-343431303837/-/format/webp/dark-side-of-the-moo.jpg",
+            "images": [
+                "https://thumb.tildacdn.com/tild6161-6239-4134-a666-343431303837/-/format/webp/dark-side-of-the-moo.jpg",
+                "https://thumb.tildacdn.com/tild3564-6533-4439-a635-336366663337/-/format/webp/Darskide.jpg",
+                "https://thumb.tildacdn.com/tild3536-3761-4030-a539-653162343335/-/format/webp/780747c.jpg"
+            ]
+        },
+        {
+            "id": 34,
+            "group": "Foo Fighters",
+            "album": "Sonic Highways",
+            "year": 2014,
+            "price": 60.99,
+            "format": "CD",
+            "category": "Alternative Rock",
+            "trackList": [
+                "Something From Nothing",
+                "The Feast And The Famine",
+                "Congregation",
+                "What Did I Do?/God As My Witness",
+                "Outside",
+                "In The Clear",
+                "Subterranean",
+                "I Am A River"
+            ],
+            "thumbnail": "https://thumb.tildacdn.com/tild3331-6230-4163-b632-393738306432/-/format/webp/81f85_xfCmL_AC_SL150.jpg",
+            "images": [
+                "https://thumb.tildacdn.com/tild3331-6230-4163-b632-393738306432/-/format/webp/81f85_xfCmL_AC_SL150.jpg",
+                "https://thumb.tildacdn.com/tild3031-3437-4337-b332-636634623161/-/format/webp/FF_Sonic.jpg",
+                "https://thumb.tildacdn.com/tild6333-6233-4266-b839-333666383934/-/format/webp/FF_SH.jpg"
+            ]
+        },
+        {
+            "id": 35,
+            "group": "Freddie Mercury",
+            "album": "Mr. Bad Guy",
+            "year": 2019,
+            "price": 61.99,
+            "format": "CD",
+            "category": "Rock",
+            "trackList": [
+                "Let's Turn It On",
+                "Made In Heaven",
+                "I Was Born To Love You",
+                "Foolin' Around",
+                "Your Kind Of Lover",
+                "Mr. Bad Guy",
+                "Man Made Paradise",
+                "There Must Be More To Life Than This",
+                "Living On My Own",
+                "My Love Is Dangerous",
+                "Love Me Like There's No Tomorrow"
+            ],
+            "thumbnail": "https://thumb.tildacdn.com/tild3166-3639-4239-b539-363730386333/-/format/webp/81-D4BqitjL_SL1500_.jpg",
+            "images": [
+                "https://thumb.tildacdn.com/tild3166-3639-4239-b539-363730386333/-/format/webp/81-D4BqitjL_SL1500_.jpg",
+                "https://thumb.tildacdn.com/tild6461-3138-4461-b761-313132336266/-/format/webp/Freddie.jpg",
+                "https://thumb.tildacdn.com/tild6637-6663-4063-a361-353066656462/-/format/webp/9eb6dc91b3adf95a1dd2.jpg"
+            ]
+        },
+        {
+            "id": 36,
+            "group": "Queen",
+            "album": "Bohemian Rhapsody",
+            "year": 2019,
+            "price": 63.99,
+            "format": "CD",
+            "category": "Rock",
+            "trackList": [
+                "20th Century Fox Fanfare",
+                "Somebody To Love",
+                "Doing All Right... Revisited",
+                "Keep Yourself Alive (Live At The Rainbow)",
+                "Killer Queen",
+                "Fat Bottomed Girls (Live In Paris)",
+                "Bohemian Rhapsody",
+                "Now I'm Here (Live At Hammersmith Odeon)",
+                "Crazy Little Thing Called Love",
+                "Love Of My Life (Rock In Rio)",
+                "We Will Rock You (Movie Mix)",
+                "Another One Bites The Dust",
+                "I Want To Break Free",
+                "Under Pressure",
+                "Who Wants To Live Forever",
+                "Bohemian Rhapsody (Live Aid)",
+                "Radio Ga Ga",
+                "Ay-Oh (Live Aid)",
+                "Hammer To Fall (Live Aid)",
+                "We Are The Champions (Live Aid)",
+                "Don't Stop Me Now... Revisited",
+                "The Show Must Go On"
+            ],
+            "thumbnail": "https://thumb.tildacdn.com/tild3936-3966-4333-b236-373237666463/-/format/webp/c48ba6c3.jpg",
+            "images": [
+                "https://thumb.tildacdn.com/tild3936-3966-4333-b236-373237666463/-/format/webp/c48ba6c3.jpg",
+                "https://thumb.tildacdn.com/tild6434-3839-4530-b335-653364346264/-/format/webp/Bohemian.jpg",
+                "https://thumb.tildacdn.com/tild3963-6164-4166-b539-313230656365/-/format/webp/a1f00a74aa5008a9cd22.jpg"
+            ]
+        },
+        {
+            "id": 37,
+            "group": "Blink-182",
+            "album": "Take Off Your Pants And Jacket",
+            "year": 2016,
+            "price": 63.99,
+            "format": "CD",
+            "category": "Rock",
+            "trackList": [
+                "Anthem Part Two",
+                "Online Songs",
+                "First Date",
+                "Happy Holidays, You Bastard",
+                "Story Of A Lonely Guy",
+                "The Rock Show",
+                "Stay Together For The Kids",
+                "Roller Coaster",
+                "Reckless Abandon",
+                "Everytime I Look For You",
+                "Give Me One Good Reason",
+                "Shut Up",
+                "Please Take Me Home"
+            ],
+            "thumbnail": "https://thumb.tildacdn.com/tild3266-6639-4035-b364-346332303338/-/format/webp/_57.jpg",
+            "images": [
+                "https://thumb.tildacdn.com/tild3266-6639-4035-b364-346332303338/-/format/webp/_57.jpg",
+                "https://thumb.tildacdn.com/tild3239-6363-4361-b164-633031653831/-/format/webp/Take_off_your_pants.jpg",
+                "https://thumb.tildacdn.com/tild3763-3861-4135-b134-653364333162/-/format/webp/blink-182-take-off-y.JPG"
+            ]
+        },
+        {
+            "id": 38,
+            "group": "Fall Out Boy",
+            "album": "Folie À Deux",
+            "year": 2018,
+            "price": 64.99,
+            "format": "CD",
+            "category": "Pop Punk",
+            "trackList": [
+                "Disloyal Order Of Water Buffaloes",
+                "I Don't Care",
+                "She's My Winona",
+                "America's Suitehearts",
+                "Headfirst Slide Into Cooperstown On A Bad Bet",
+                "The (Shipped) Gold Standard",
+                "(Coffee's For Closers)",
+                "What A Catch, Donnie",
+                "27",
+                "Tiffany Blews",
+                "w.a.m.s.",
+                "20 Dollar Nose Bleed",
+                "West Coast Smoker"
+            ],
+            "thumbnail": "https://thumb.tildacdn.com/tild6461-3937-4233-b338-393139326135/-/format/webp/61vgbz1GVUL_SL1200_.jpg",
+            "images": [
+                "https://thumb.tildacdn.com/tild6461-3937-4233-b338-393139326135/-/format/webp/61vgbz1GVUL_SL1200_.jpg",
+                "https://thumb.tildacdn.com/tild6234-3866-4434-b832-633164346565/-/format/webp/Follie.jpg",
+                "https://thumb.tildacdn.com/tild3836-3964-4661-a361-323037356664/-/format/webp/fall-out-boy-folie-a.jpg"
+            ]
+        },
+        {
+            "id": 39,
+            "group": "Imagine Dragons",
+            "album": "Smoke + Mirrors",
+            "year": 2017,
+            "price": 64.99,
+            "format": "CD",
+            "category": "Alternative Rock",
+            "trackList": [
+                "Shots",
+                "Gold",
+                "Smoke And Mirrors",
+                "I'm So Sorry",
+                "I Bet My Life",
+                "Polaroid",
+                "Friction",
+                "It Comes Back To You",
+                "Dream",
+                "Trouble",
+                "Summer",
+                "Hopeless Opus",
+                "The Fall",
+                "Warriors",
+                "Battle Cry",
+                "Monsters",
+                "Who We Are"
+            ],
+            "thumbnail": "https://thumb.tildacdn.com/tild3766-6531-4334-b336-663336316338/-/format/webp/1011825057.jpg",
+            "images": [
+                "https://thumb.tildacdn.com/tild3766-6531-4334-b336-663336316338/-/format/webp/1011825057.jpg",
+                "https://thumb.tildacdn.com/tild3362-3436-4165-b762-353533393638/-/format/webp/Smoke_Mirrors.jpg",
+                "https://thumb.tildacdn.com/tild6565-6461-4631-b761-626432653565/-/format/webp/smoke_mirrors_imagin.jpg"
+            ]
+        },
+        {
+            "id": 40,
+            "group": "Red Hot Chili Peppers",
+            "album": "I'm With You",
+            "year": 2016,
+            "price": 64.99,
+            "format": "CD",
+            "category": "Rock",
+            "trackList": [
+                "Monarchy Of Roses",
+                "Factory Of Faith",
+                "Brendan's Death Song",
+                "Ethiopia",
+                "Annie Wants A Baby",
+                "Look Around",
+                "The Adventures Of Rain Dance Maggie",
+                "Did I Let You Know",
+                "Goodbye Hooray",
+                "Happiness Loves Company",
+                "Police Station",
+                "Even You Brutus?",
+                "Meet Me At The Corner",
+                "Dance, Dance, Dance"
+            ],
+            "thumbnail": "https://thumb.tildacdn.com/tild6235-3436-4338-b962-356438373463/-/format/webp/r_Ko_FALAvKREXLk.jpg",
+            "images": [
+                "https://thumb.tildacdn.com/tild6235-3436-4338-b962-356438373463/-/format/webp/r_Ko_FALAvKREXLk.jpg",
+                "https://thumb.tildacdn.com/tild3037-6330-4265-b064-366633383062/-/format/webp/Im_With_You.jpg",
+                "https://thumb.tildacdn.com/tild6331-3036-4735-a364-396539663265/-/format/webp/big_red_hot_chili_pe.jpg"
             ]
         }
     ]
