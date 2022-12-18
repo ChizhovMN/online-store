@@ -1,25 +1,13 @@
 import React from 'react';
 import './App.css';
-
+import { Header } from './pages/header';
+import { Footer } from './pages/footer';
 function App() {
   return (
-    <div className="App">
-      hello there
-      {/* <header className="App-header">
-        <img src={ } className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header> */}
-    </div>
+    <>
+      <Header />
+      <Footer />
+    </>
   );
 }
 
