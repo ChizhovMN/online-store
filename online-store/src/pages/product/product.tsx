@@ -1,3 +1,7 @@
 import React from 'react';
-import './pages/product/product.css';
-export { };
+import '../product/product.css';
+
+function Product() {
+  return <div className="prouct">PRODUCT</div>;
+}
+export { Product };

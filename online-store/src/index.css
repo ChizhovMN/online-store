@@ -2,7 +2,7 @@
   box-sizing: border-box;
 }
 
-body {
+#root {
   display: flex;
   flex-direction: column;
   background-image: url("./assets/images/vinyl.jpg");
@@ -12,4 +12,10 @@ body {
   padding: 20px;
   font-size: 1.5rem;
   min-width: 320px
+}
+
+.main {
+  background-color: white;
+  flex-grow: 1;
+  padding: 10px;
 }

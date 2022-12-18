@@ -1,3 +1,7 @@
 import React from 'react';
-import './pages/cart/cart.css';
-export { };
+import '../cart/cart.css';
+
+function Cart() {
+  return <div className="cart">CART WRAPPER</div>;
+}
+export { Cart };
