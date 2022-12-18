@@ -12,7 +12,7 @@ function App() {
   return (
     <>
       <Header />
-      <div className="main">
+      <main className="main">
         <Routes>
           <Route path="/" element={<Main />} />
           <Route path="cart" element={<Cart />} />
@@ -21,7 +21,7 @@ function App() {
           <Route path="*" element={<Navigate to="404" replace />} />
           {/* TODO:  check url with render and redirect*/}
         </Routes>
-      </div>
+      </main>
       <Footer />
     </>
   );
