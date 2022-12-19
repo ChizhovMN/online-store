@@ -1,9 +1,11 @@
 import React from 'react';
 import { Products } from '../../../types';
 function ShopTable(props: Products[]) {
+  const data = Object.values(props);
+  console.log(data);
   return (
     <div className="shop-table">
-      {props.map(({ thumbnail, group, album, year, format, price, id }: Products) => {
+      {data.map(({ thumbnail, group, album, year, format, price, id }: Products) => {
         return (
           <div key={id} className="table-item">
             <figure className="figure-item">
