@@ -5,9 +5,17 @@
   gap: 10px;
 }
 
+.shop-sort {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+
 .table-item {
   flex-grow: 1;
+  cursor: pointer;
 }
+
 
 .figure-item {
   margin: 0;
@@ -17,6 +25,12 @@
   aspect-ratio: 1;
   width: 250px;
   height: 250px;
+}
+
+.small {
+  aspect-ratio: 1;
+  width: 200px;
+  height: 200px;
 }
 
 .item-description,

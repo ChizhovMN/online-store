@@ -2,16 +2,20 @@
   box-sizing: border-box;
 }
 
-#root {
-  display: flex;
-  flex-direction: column;
+body {
   background-image: url("./assets/images/vinyl.jpg");
-  background-repeat: no-repeat;
-  height: 100vh;
   background-position: 50%;
   padding: 20px;
   font-size: 1.5rem;
   min-width: 320px
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  max-width: 1280px;
+  margin: 0 auto;
+  height: 100vh;
 }
 
 .main {
