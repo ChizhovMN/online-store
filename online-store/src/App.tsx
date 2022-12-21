@@ -16,7 +16,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Main />} />
           <Route path="cart" element={<Cart />} />
-          <Route path="product" element={<Product />} />
+          <Route path="product/:id" element={<Product />} />
           <Route path="404" element={<Error />} />
           <Route path="*" element={<Navigate to="404" replace />} />
           {/* TODO:  check url with render and redirect*/}
