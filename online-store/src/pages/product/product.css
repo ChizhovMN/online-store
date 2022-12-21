@@ -43,6 +43,7 @@
   width: 100%;
   aspect-ratio: 1;
   cursor: pointer;
+  object-fit: contain;
 }
 
 .product-header {

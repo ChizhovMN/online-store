@@ -1,13 +1,23 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { products } from '../../products';
-import { useParams } from 'react-router-dom';
+import { useParams, Navigate } from 'react-router-dom';
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
 import '../product/product.css';
 
 export function Product() {
+  const navigate = useNavigate();
   const { id } = useParams();
+  // console.log(id);
+  // React.useEffect(() => {
+  //   if (Number(id) > products.length) {
+  //     console.log(true);
+  //     navigate('404');
+  //   }
+  // });
   const currentCard = products.filter((item) => item.id === Number(id));
+
   const [urlImg, setUrlImg] = useState(currentCard[0].thumbnail);
   return (
     <div className="product">
@@ -49,7 +59,7 @@ export function Product() {
           <div className="product-price">${currentCard[0].price}</div>
         </div>
         <div className="product-btn">
-          <Stack spacing={2} direction="row">
+          <Stack spacing={4} direction="row">
             <Button variant="text">Buy</Button>
             <Button variant="text">ADD CART</Button>
           </Stack>

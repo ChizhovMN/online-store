@@ -1,11 +1,10 @@
-
-.checkBox{
+.checkBox {
     display: flex;
     width: 36%;
     flex-direction: column;
 }
 
-.checkList{
+.checkList {
     display: flex;
     flex-flow: wrap;
 }

@@ -1,13 +1,13 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { Products } from '../../../types';
+import { Product } from '../../../types';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { Button, CardActionArea, CardActions } from '@mui/material';
 
-export const TableItemSmall = ({ thumbnail, group, album, year, format, price, id }: Products) => {
+export const TableItemSmall = ({ thumbnail, group, album, year, format, price, id }: Product) => {
   const navigate = useNavigate();
   return (
     <Card className="table-item small">

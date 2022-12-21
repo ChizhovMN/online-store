@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Products } from '../../../types';
+import React, { FC, PropsWithChildren, useState } from 'react';
+import { Product } from '../../../types';
 import { Link } from 'react-router-dom';
 import { TableItemBig } from './tableItemBig';
 import ViewModuleIcon from '@mui/icons-material/ViewModule';
@@ -18,8 +18,13 @@ const itemViewComponentMapping = {
   [ItemViewType.Small]: TableItemSmall,
 };
 
-function ShopTable(props: Products[]) {
-  const data = Object.values(props);
+//TODO: create PropType for component
+// TODO: replace props: Products[] andObject.values() with canonical props eclaration
+
+type ShopTableProps = {
+  items: Product[];
+};
+const ShopTable: FC<PropsWithChildren<ShopTableProps>> = ({ items: products }) => {
   const [itemView, setItemView] = useState(ItemViewType.Large);
   const ItemView = itemViewComponentMapping[itemView] ?? TableItemBig;
   return (
@@ -45,10 +50,10 @@ function ShopTable(props: Products[]) {
           </ToggleButton>
         </ToggleButtonGroup>
       </div>
-      {data.map((item: Products) => (
+      {products.map((item: Product) => (
         <ItemView {...item} key={item.id} />
       ))}
     </div>
   );
-}
+};
 export { ShopTable };

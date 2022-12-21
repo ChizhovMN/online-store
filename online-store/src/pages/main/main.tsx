@@ -8,7 +8,7 @@ function Main() {
   return (
     <div className="shop">
       <CheckboxGenre />
-      <ShopTable {...products} />
+      <ShopTable items={products} />
     </div>
   );
 }
