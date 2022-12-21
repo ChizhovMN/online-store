@@ -5,6 +5,7 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
 import { products } from '../../../products';
 import RangeSlider from './dualSliders';
+import './sortBox.css';
 export default function CheckboxGenre() {
   // const [userinfo, setUserInfo] = useState({
   // genres: [],
@@ -41,14 +42,21 @@ export default function CheckboxGenre() {
           );
         })}
       </FormGroup>
-      <FormGroup>
-        <h3>Genre</h3>
-        {uniqCategory.map((el, index) => {
-          return (
-            <FormControlLabel key={`key${index}`} control={<Checkbox value={el} />} label={el} />
-          );
-        })}
-      </FormGroup>
+      <div className="checkBox">
+        <h3 className="titleGenre">Genre</h3>
+        <FormGroup className="checkList">
+          {uniqCategory.map((el, index) => {
+            return (
+              <FormControlLabel
+                className="checkLabel"
+                key={`key${index}`}
+                control={<Checkbox value={el} />}
+                label={el}
+              />
+            );
+          })}
+        </FormGroup>
+      </div>
       <RangeSlider />
       <RangeSlider />
     </div>

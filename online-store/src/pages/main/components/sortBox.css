@@ -1,0 +1,19 @@
+
+.checkBox{
+    display: flex;
+    width: 36%;
+    flex-direction: column;
+}
+
+.checkList{
+    display: flex;
+    flex-flow: wrap;
+}
+
+.checkLabel {
+    display: flex;
+}
+
+.titleGenre {
+    color: aquamarine;
+}
