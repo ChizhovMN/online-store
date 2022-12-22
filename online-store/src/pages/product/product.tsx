@@ -54,7 +54,7 @@ export function Product() {
         </ol>
         <div className="product-info">
           <div className="product-year">The year of publishing : {currentCard[0].year}</div>
-          <div className="product-janre">Janre : {currentCard[0].category}</div>
+          <div className="product-janre">Genre : {currentCard[0].category}</div>
           <div className="product-format">Format : {currentCard[0].format}</div>
           <div className="product-price">${currentCard[0].price}</div>
         </div>

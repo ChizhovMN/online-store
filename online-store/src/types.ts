@@ -10,3 +10,5 @@ export interface Product {
   thumbnail: string;
   images: string[];
 }
+
+export type RangeMinMax = [min: number, max: number];

@@ -17,10 +17,6 @@ const itemViewComponentMapping = {
   [ItemViewType.Large]: TableItemBig,
   [ItemViewType.Small]: TableItemSmall,
 };
-
-//TODO: create PropType for component
-// TODO: replace props: Products[] andObject.values() with canonical props eclaration
-
 type ShopTableProps = {
   items: Product[];
 };

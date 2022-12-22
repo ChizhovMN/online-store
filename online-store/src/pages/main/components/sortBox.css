@@ -1,6 +1,14 @@
-.checkBox {
+.sort-box {
     display: flex;
-    width: 36%;
+}
+
+.checkBox-format {
+    flex-grow: 1;
+}
+
+.checkBox-category {
+    display: flex;
+    flex-grow: 1;
     flex-direction: column;
 }
 
@@ -11,6 +19,7 @@
 
 .checkLabel {
     display: flex;
+    flex-grow: 1
 }
 
 .titleGenre {
