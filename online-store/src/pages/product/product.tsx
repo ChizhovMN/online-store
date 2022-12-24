@@ -5,6 +5,8 @@ import { useParams, Navigate } from 'react-router-dom';
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
 import '../product/product.css';
+import { AddButton } from '../main/components/addButton';
+import { BuyButton } from '../buyButton';
 
 export function Product() {
   const navigate = useNavigate();
@@ -60,8 +62,8 @@ export function Product() {
         </div>
         <div className="product-btn">
           <Stack spacing={4} direction="row">
-            <Button variant="text">Buy</Button>
-            <Button variant="text">ADD CART</Button>
+            <BuyButton />
+            <AddButton id={Number(id)} />
           </Stack>
         </div>
       </div>
