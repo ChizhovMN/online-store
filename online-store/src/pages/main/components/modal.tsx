@@ -3,8 +3,8 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
-// import { BuyButton } from '../../buyButton';
 import { Link, useNavigate } from 'react-router-dom';
+import PaymentForm from '../components/formCard';
 
 const style = {
   position: 'absolute' as const,
@@ -38,26 +38,9 @@ export default function BasicModal() {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-          <Typography id="modal-modal-title" variant="h6" component="h2">
-            Text in a modal
-          </Typography>
-          <Form />
+          <PaymentForm />
         </Box>
       </Modal>
     </div>
   );
-}
-
-class Form extends Component {
-  render() {
-    return (
-      <form>
-        <h2>Sign up</h2>
-        {/* <div className="form-group"> */}
-          {/* <label htmlFor="email">Email address</label> */}
-          {/* <input type="email" className="form-control" name="email" /> */}
-        {/* </div> */}
-      </form>
-    );
-  }
 }
