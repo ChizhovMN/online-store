@@ -1,4 +1,3 @@
-// import { FC } from 'react';
 // import { products } from '../products';
 // import { FILTER_BY_GROUP } from './actionTypes';
 
@@ -11,5 +10,4 @@
 //       return [...state];
 //   }
 // };
-
 export { };

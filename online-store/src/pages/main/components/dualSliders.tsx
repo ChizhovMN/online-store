@@ -24,7 +24,6 @@ export const RangeSlider: FC<PropsWithChildren<RangeSliderProps>> = ({
     const newData = filterItemsProperty.filter(
       (item) => value[0] <= item[property] && item[property] <= value[1]
     );
-    console.log(newData);
   };
   const marks = [
     {

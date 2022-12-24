@@ -6,6 +6,7 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { Button, CardActionArea, CardActions } from '@mui/material';
+import { AddButton } from './addButton';
 
 export const TableItemBig = ({ thumbnail, group, album, year, format, price, id }: Product) => {
   const navigate = useNavigate();
@@ -39,16 +40,17 @@ export const TableItemBig = ({ thumbnail, group, album, year, format, price, id 
           </Typography>
         </CardContent>
       </CardActionArea>
-      <CardActions>
-        <Link to={`/product/${id}`} className="item-btn">
+      <CardActions className="card-action">
+        <Button
+          size="small"
+          color="primary"
+          onClick={() => {
+            navigate(`/product/${id}`);
+          }}
+        >
           DETAILS
-        </Link>
-        <Link to="cart" className="item-btn">
-          CART
-        </Link>
-        <Button size="small" color="primary">
-          Add
         </Button>
+        <AddButton id={id} />
       </CardActions>
     </Card>
   );

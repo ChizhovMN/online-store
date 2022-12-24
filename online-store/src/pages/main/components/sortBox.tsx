@@ -22,7 +22,6 @@ const minMaxYear: RangeMinMax = [
 export const CheckboxGenre: FC<PropsWithChildren<SortTableProps>> = ({
   sortItems: sortProducts,
 }) => {
-  console.log('checkbox', sortProducts);
   const [checkBox, setCheckBox] = useState({});
   // const [userinfo, setUserInfo] = useState({
   // genres: [],

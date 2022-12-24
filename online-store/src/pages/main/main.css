@@ -23,6 +23,10 @@
   max-width: 200px;
 }
 
+.card-action {
+  justify-content: space-between;
+}
+
 /* .table-image {
   aspect-ratio: 1;
   width: 250px;
