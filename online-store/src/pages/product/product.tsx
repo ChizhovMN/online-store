@@ -7,6 +7,7 @@ import Button from '@mui/material/Button';
 import '../product/product.css';
 import { AddButton } from '../main/components/addButton';
 import { BuyButton } from '../buyButton';
+import BasicModal from '../main/components/modal';
 
 export function Product() {
   const navigate = useNavigate();
@@ -62,7 +63,8 @@ export function Product() {
         </div>
         <div className="product-btn">
           <Stack spacing={4} direction="row">
-            <BuyButton />
+            {/* <BuyButton /> */}
+            <BasicModal />
             <AddButton id={Number(id)} />
           </Stack>
         </div>
