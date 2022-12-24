@@ -1,10 +1,9 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
-import { Link, useNavigate } from 'react-router-dom';
-import PaymentForm from '../components/formCard';
+import { useNavigate } from 'react-router-dom';
+// import PaymentForm from '../components/formCard';
 
 const style = {
   position: 'absolute' as const,
@@ -37,9 +36,7 @@ export default function BasicModal() {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Box sx={style}>
-          <PaymentForm />
-        </Box>
+        <Box sx={style}>{/* <PaymentForm /> */}</Box>
       </Modal>
     </div>
   );

@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, connect, useSelector } from 'react-redux';
 import './App.css';
 import { Header } from './pages/header';
 import { Footer } from './pages/footer';
@@ -7,11 +8,21 @@ import { Main } from './pages/main/main';
 import { Product } from './pages/product/product';
 import { Error } from './pages/404/404';
 import { Routes, Route, Navigate } from 'react-router-dom';
-import { products } from './products';
+import { products as initialProducts } from './products';
+import { loadInitialProductsData, RootState, selectProducts } from './store/store';
+import { Product as ProductType } from './types';
 
-function App() {
-  const [filterProducts, setFilterProducts] = useState(products);
+// type AppProps = {
+//   products: ProductType[];
+// };
+export default function App() {
   const [cartTotal, setCartTotal] = useState(0);
+  const dispatch = useDispatch();
+  const products = useSelector(selectProducts);
+  useEffect(() => {
+    dispatch(loadInitialProductsData(initialProducts));
+  }, [dispatch]);
+  useEffect(() => console.log(products), [products]);
   return (
     <>
       <Header cart={cartTotal} />
@@ -29,5 +40,10 @@ function App() {
     </>
   );
 }
+// const mapStateToProps = (state: RootState) => {
+//   return {
+//     products: state.products,
+//   };
+// };
 
-export default App;
+// export default connect(mapStateToProps)(App);
