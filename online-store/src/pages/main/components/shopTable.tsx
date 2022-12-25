@@ -7,6 +7,9 @@ import ToggleButton from '@mui/material/ToggleButton';
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 import GridViewSharpIcon from '@mui/icons-material/GridViewSharp';
 import { TableItemSmall } from './tableItemSmall';
+import SelectSmall from './selectSort';
+import { useSelector } from 'react-redux';
+import { selectProducts } from '../../../store/store';
 
 const ItemViewType = {
   Large: 'large',
@@ -26,7 +29,9 @@ const ShopTable: FC<PropsWithChildren<ShopTableProps>> = ({ items: products }) =
   return (
     <div className="shop-table">
       <div className="shop-sort">
-        <div className="sort-options">SORT</div>
+        <div className="sort-options">
+          <SelectSmall />
+        </div>
         <div className="products-found">FOUND</div>
         <div className="search">search</div>
         <ToggleButtonGroup orientation="horizontal" exclusive>
