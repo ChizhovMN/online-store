@@ -1,6 +1,5 @@
 import React, { FC, PropsWithChildren, useState } from 'react';
 import { Product } from '../../../types';
-import { Link } from 'react-router-dom';
 import { TableItemBig } from './tableItemBig';
 import ViewModuleIcon from '@mui/icons-material/ViewModule';
 import ToggleButton from '@mui/material/ToggleButton';
@@ -8,8 +7,6 @@ import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 import GridViewSharpIcon from '@mui/icons-material/GridViewSharp';
 import { TableItemSmall } from './tableItemSmall';
 import SelectSmall from './selectSort';
-import { useSelector } from 'react-redux';
-import { selectProducts } from '../../../store/store';
 
 const ItemViewType = {
   Large: 'large',
@@ -32,13 +29,17 @@ const ShopTable: FC<PropsWithChildren<ShopTableProps>> = ({ items: products }) =
         <div className="sort-options">
           <SelectSmall />
         </div>
-        <div className="products-found">FOUND</div>
+        <div className="products-found">
+          Found: {products.length ? products.length : 0} products
+        </div>
         <div className="search">search</div>
-        <ToggleButtonGroup orientation="horizontal" exclusive>
+        <ToggleButtonGroup orientation="horizontal" exclusive className="size-btn-wrapper">
           <ToggleButton
             value="grid"
             aria-label="grid"
-            onClick={() => setItemView(ItemViewType.Large)}
+            onClick={() => {
+              setItemView(ItemViewType.Large);
+            }}
           >
             <GridViewSharpIcon />
           </ToggleButton>

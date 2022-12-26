@@ -10,6 +10,16 @@
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+
+.sort-options,
+.products-found,
+.search,
+.size-btn-wrapper {
+  flex-grow: 1;
+  justify-content: center;
 }
 
 .table-item {

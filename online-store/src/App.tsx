@@ -10,10 +10,9 @@ import { Error } from './pages/404/404';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { products as initialProducts } from './products';
 import { loadInitialProductsData } from './store/store';
+import { CartType } from './types';
 
-// type AppProps = {
-//   products: ProductType[];
-// };
+export const cartShop: CartType[] = [];
 export default function App() {
   const [cartTotal, setCartTotal] = useState(0);
   const dispatch = useDispatch();
