@@ -26,7 +26,9 @@
   flex-grow: 1;
   cursor: pointer;
   max-width: 300px;
-  margin: auto;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
 }
 
 .table-item.small {
@@ -35,6 +37,7 @@
 
 .card-action {
   justify-content: space-between;
+  margin-top: auto;
 }
 
 /* .table-image {

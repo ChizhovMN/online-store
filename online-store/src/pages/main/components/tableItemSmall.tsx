@@ -8,7 +8,7 @@ import Typography from '@mui/material/Typography';
 import { Button, CardActionArea, CardActions } from '@mui/material';
 import { AddButton } from './addButton';
 
-export const TableItemSmall = ({ thumbnail, group, id }: Product) => {
+export const TableItemSmall = React.memo(({ thumbnail, group, id }: Product) => {
   const navigate = useNavigate();
   return (
     <Card className="table-item small">
@@ -45,4 +45,4 @@ export const TableItemSmall = ({ thumbnail, group, id }: Product) => {
       </CardActions>
     </Card>
   );
-};
+});

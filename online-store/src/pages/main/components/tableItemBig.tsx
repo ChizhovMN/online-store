@@ -8,50 +8,53 @@ import Typography from '@mui/material/Typography';
 import { Button, CardActionArea, CardActions } from '@mui/material';
 import { AddButton } from './addButton';
 
-export const TableItemBig = ({ thumbnail, group, album, year, format, price, id }: Product) => {
-  const navigate = useNavigate();
-  return (
-    <Card className="table-item">
-      <CardActionArea
-        onClick={() => {
-          navigate(`/product/${id}`);
-        }}
-      >
-        <CardMedia
-          component="img"
-          height="300"
-          width="300"
-          aspect-ratio="1"
-          image={thumbnail}
-          alt="music cd/vin"
-        />
-        <CardContent>
-          <Typography gutterBottom variant="h5" component="div">
-            {album}
-          </Typography>
-          <Typography gutterBottom variant="h5" component="div">
-            {group}
-          </Typography>
-          <Typography variant="body2" color="text.secondary">
-            {year + ' ' + format}
-          </Typography>
-          <Typography variant="body2" color="text.secondary">
-            {price}$
-          </Typography>
-        </CardContent>
-      </CardActionArea>
-      <CardActions className="card-action">
-        <Button
-          size="small"
-          color="primary"
+export const TableItemBig = React.memo(
+  ({ thumbnail, group, album, year, format, price, id }: Product) => {
+    console.log(id);
+    const navigate = useNavigate();
+    return (
+      <Card className="table-item">
+        <CardActionArea
           onClick={() => {
             navigate(`/product/${id}`);
           }}
         >
-          DETAILS
-        </Button>
-        <AddButton id={id} />
-      </CardActions>
-    </Card>
-  );
-};
+          <CardMedia
+            component="img"
+            height="300"
+            width="300"
+            aspect-ratio="1"
+            image={thumbnail}
+            alt="music cd/vin"
+          />
+          <CardContent>
+            <Typography gutterBottom variant="h5" component="div">
+              {album}
+            </Typography>
+            <Typography gutterBottom variant="h5" component="div">
+              {group}
+            </Typography>
+            <Typography variant="body2" color="text.secondary">
+              {year + ' ' + format}
+            </Typography>
+            <Typography variant="body2" color="text.secondary">
+              {price}$
+            </Typography>
+          </CardContent>
+        </CardActionArea>
+        <CardActions className="card-action">
+          <Button
+            size="small"
+            color="primary"
+            onClick={() => {
+              navigate(`/product/${id}`);
+            }}
+          >
+            DETAILS
+          </Button>
+          <AddButton id={id} />
+        </CardActions>
+      </Card>
+    );
+  }
+);

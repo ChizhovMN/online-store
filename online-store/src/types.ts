@@ -13,8 +13,7 @@ export interface Product {
 
 export type RangeMinMax = [min: number, max: number];
 
-export type CartType = {
-  id: number;
+export type CartEntry = {
+  productId: Product['id'];
   count: number;
-  cost: number;
 };

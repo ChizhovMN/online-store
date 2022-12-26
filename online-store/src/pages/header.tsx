@@ -1,4 +1,4 @@
-import React, { FC, PropsWithChildren } from 'react';
+import React from 'react';
 import '../styles/header.css';
 import logo from '../assets/icons/logo.svg';
 import { Link } from 'react-router-dom';
@@ -9,8 +9,7 @@ export type HeaderProps = {
   cart: number | string;
 };
 
-export const Header: FC<PropsWithChildren<HeaderProps>> = ({ cart }) => {
-  console.log(cart);
+export const Header = () => {
   return (
     <header className="header">
       <div className="header-wrapper">
@@ -20,7 +19,7 @@ export const Header: FC<PropsWithChildren<HeaderProps>> = ({ cart }) => {
             Disco store
           </Link>
         </div>
-        <CountCart cart={cart} />
+        <CountCart />
         <div className="header-cart">
           <Link to="/cart" className="cart">
             cart

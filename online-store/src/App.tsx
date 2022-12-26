@@ -10,21 +10,18 @@ import { Error } from './pages/404/404';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { products as initialProducts } from './products';
 import { loadInitialProductsData } from './store/store';
-import { CartType } from './types';
 
-export const cartShop: CartType[] = [];
 export default function App() {
-  const [cartTotal, setCartTotal] = useState(0);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(loadInitialProductsData(initialProducts));
   }, [dispatch]);
   return (
     <>
-      <Header cart={cartTotal} />
+      <Header />
       <main className="main">
         <Routes>
-          <Route path="/" element={<Main cartTotal={cartTotal} setCart={setCartTotal} />} />
+          <Route path="/" element={<Main />} />
           <Route path="cart" element={<Cart />} />
           <Route path="product/:id" element={<Product />} />
           <Route path="404" element={<Error />} />
