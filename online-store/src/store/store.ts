@@ -32,7 +32,7 @@ export const loadInitialProductsData = createAction<Product[]>('products/loadIni
 export const setProductsSortOptions = createAction<RootState['sort']>(
   'products/setProductsSortOptions'
 );
-
+export const deleteProductFromCart = createAction<number>('product/deleteProductFromCart');
 export const updateCart = createAction<CartEntry>('product/updateCart');
 
 const productsReducer = createReducer(initialState, (builder) => {
@@ -43,6 +43,10 @@ const productsReducer = createReducer(initialState, (builder) => {
     .addCase(setProductsSortOptions, (state, action) => {
       state.sort = action.payload;
     })
+    .addCase(deleteProductFromCart, (state, action) => {
+      const productId = action.payload;
+      state.cart.entries = state.cart.entries.filter((p) => p.productId !== productId);
+    })
     .addCase(updateCart, (state, action) => {
       const { productId, count } = action.payload;
       const entry = state.cart.entries.find((entry) => entry.productId === productId);
@@ -51,7 +55,6 @@ const productsReducer = createReducer(initialState, (builder) => {
       } else {
         entry.count += count;
       }
-
       state.cart.entries = state.cart.entries.filter((p) => p.count > 0);
     });
 });

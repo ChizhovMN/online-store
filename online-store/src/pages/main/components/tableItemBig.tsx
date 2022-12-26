@@ -10,7 +10,6 @@ import { AddButton } from './addButton';
 
 export const TableItemBig = React.memo(
   ({ thumbnail, group, album, year, format, price, id }: Product) => {
-    console.log(id);
     const navigate = useNavigate();
     return (
       <Card className="table-item">
