@@ -1,5 +1,5 @@
 // import * as React from 'react';
-import React, { useState, FC, PropsWithChildren } from 'react';
+import React, { FC, PropsWithChildren } from 'react';
 import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
@@ -7,7 +7,8 @@ import { products } from '../../../products';
 import { RangeSlider } from './dualSliders';
 import './sortBox.css';
 import { ProductType, RangeMinMax } from '../../../types';
-import { uniqCategory, uniqFormat } from '../../../store/store';
+import { checkFilters, uniqCategory, uniqFormat } from '../../../store/store';
+import { useDispatch } from 'react-redux';
 
 type SortTableProps = {
   sortItems: ProductType[];
@@ -23,13 +24,21 @@ const minMaxYear: RangeMinMax = [
 export const CheckboxGenre: FC<PropsWithChildren<SortTableProps>> = ({
   sortItems: sortProducts,
 }) => {
-  const onChange = () => console.log(true);
+  const dispatch = useDispatch();
+  const onChange = (el: string) => {
+    dispatch(checkFilters(el));
+  };
   return (
     <div className="sort-box">
       <FormGroup className="checkBox-format">
         <h3>Format</h3>
         {uniqFormat.map((el) => (
-          <FormControlLabel key={el} control={<Checkbox value={el} />} label={el} />
+          <FormControlLabel
+            key={el}
+            control={<Checkbox value={el} />}
+            label={el}
+            onChange={() => onChange(el)}
+          />
         ))}
       </FormGroup>
       <div className="checkBox-category">
@@ -41,6 +50,7 @@ export const CheckboxGenre: FC<PropsWithChildren<SortTableProps>> = ({
               key={el}
               control={<Checkbox value={el} />}
               label={el}
+              onChange={() => onChange(el)}
             />
           ))}
         </FormGroup>
