@@ -40,21 +40,10 @@
   margin-top: auto;
 }
 
-/* .table-image {
-  aspect-ratio: 1;
-  width: 250px;
-  height: 250px;
-} */
-
-/* .table-image.small {
-  aspect-ratio: 1;
-  width: 200px;
-  height: 200px;
+.card-action.small {
+  justify-content: flex-end;
 }
 
-.item-description,
-.item-year,
-.item-price {
-  max-width: 250px;
-  margin: 0 auto;
-} */
+.button-group {
+  margin: 0 !important;
+}

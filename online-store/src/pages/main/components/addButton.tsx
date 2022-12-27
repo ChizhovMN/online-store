@@ -41,7 +41,7 @@ export const AddButton: FC<PropsWithChildren<AddButtonProps>> = ({ id }) => {
         },
       }}
     >
-      <ButtonGroup size="small" aria-label="small button group">
+      <ButtonGroup size="small" aria-label="small button group" className="button-group">
         <Button size="small" key="plus" onClick={() => onClick()}>
           +
         </Button>

@@ -3,6 +3,7 @@ import '../styles/header.css';
 import logo from '../assets/icons/logo.svg';
 import { Link } from 'react-router-dom';
 import { CountCart } from './countCart';
+import CustomizedBadges from './cart/cartIcon';
 
 export type HeaderProps = {
   children?: React.ReactNode;
@@ -22,7 +23,7 @@ export const Header = () => {
         <CountCart />
         <div className="header-cart">
           <Link to="/cart" className="cart">
-            cart
+            <CustomizedBadges />
           </Link>
         </div>
       </div>
