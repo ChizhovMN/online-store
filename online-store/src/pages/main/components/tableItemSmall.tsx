@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { Product } from '../../../types';
+import { ProductType } from '../../../types';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
@@ -8,7 +8,7 @@ import Typography from '@mui/material/Typography';
 import { Button, CardActionArea, CardActions } from '@mui/material';
 import { AddButton } from './addButton';
 
-export const TableItemSmall = React.memo(({ thumbnail, group, id, album }: Product) => {
+export const TableItemSmall = React.memo(({ thumbnail, group, id, album }: ProductType) => {
   const navigate = useNavigate();
   return (
     <Card className="table-item small">

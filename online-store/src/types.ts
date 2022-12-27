@@ -1,4 +1,4 @@
-export interface Product {
+export interface ProductType {
   id: number;
   group: string;
   album: string;
@@ -14,6 +14,6 @@ export interface Product {
 export type RangeMinMax = [min: number, max: number];
 
 export type CartEntry = {
-  productId: Product['id'];
+  productId: ProductType['id'];
   count: number;
 };

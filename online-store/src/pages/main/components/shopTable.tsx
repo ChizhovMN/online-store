@@ -1,5 +1,5 @@
 import React, { FC, PropsWithChildren, useState } from 'react';
-import { Product } from '../../../types';
+import { ProductType } from '../../../types';
 import { TableItemBig } from './tableItemBig';
 import ViewModuleIcon from '@mui/icons-material/ViewModule';
 import ToggleButton from '@mui/material/ToggleButton';
@@ -18,7 +18,7 @@ const itemViewComponentMapping = {
   [ItemViewType.Small]: TableItemSmall,
 };
 type ShopTableProps = {
-  items: Product[];
+  items: ProductType[];
 };
 const ShopTable: FC<PropsWithChildren<ShopTableProps>> = ({ items: products }) => {
   const [itemView, setItemView] = useState(ItemViewType.Large);
@@ -52,7 +52,7 @@ const ShopTable: FC<PropsWithChildren<ShopTableProps>> = ({ items: products }) =
           </ToggleButton>
         </ToggleButtonGroup>
       </div>
-      {products.map((item: Product) => (
+      {products.map((item: ProductType) => (
         <ItemView {...item} key={item.id} />
       ))}
     </div>

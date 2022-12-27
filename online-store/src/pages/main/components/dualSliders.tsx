@@ -1,7 +1,7 @@
 import React, { FC, PropsWithChildren } from 'react';
 import Box from '@mui/material/Box';
 import Slider from '@mui/material/Slider';
-import { Product, RangeMinMax } from '../../../types';
+import { ProductType, RangeMinMax } from '../../../types';
 
 function valuetext(value: number) {
   return `${value}`;
@@ -9,8 +9,8 @@ function valuetext(value: number) {
 type RangeSliderProps = {
   range: RangeMinMax;
   currencySymbol: string;
-  filterItemsProperty: Product[];
-  property: keyof Product;
+  filterItemsProperty: ProductType[];
+  property: keyof ProductType;
 };
 export const RangeSlider: FC<PropsWithChildren<RangeSliderProps>> = ({
   range: minMaxValues,

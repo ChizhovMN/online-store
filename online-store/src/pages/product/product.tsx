@@ -12,13 +12,6 @@ import BasicModal from '../main/components/modal';
 export function Product() {
   const navigate = useNavigate();
   const { id } = useParams();
-  // console.log(id);
-  // React.useEffect(() => {
-  //   if (Number(id) > products.length) {
-  //     console.log(true);
-  //     navigate('404');
-  //   }
-  // });
   const currentCard = products.filter((item) => item.id === Number(id));
 
   const [urlImg, setUrlImg] = useState(currentCard[0].thumbnail);

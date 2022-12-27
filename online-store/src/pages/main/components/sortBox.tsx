@@ -6,10 +6,11 @@ import Checkbox from '@mui/material/Checkbox';
 import { products } from '../../../products';
 import { RangeSlider } from './dualSliders';
 import './sortBox.css';
-import { Product, RangeMinMax } from '../../../types';
+import { ProductType, RangeMinMax } from '../../../types';
+import { uniqCategory, uniqFormat } from '../../../store/store';
 
 type SortTableProps = {
-  sortItems: Product[];
+  sortItems: ProductType[];
 };
 const minMaxPrice: RangeMinMax = [
   Math.min(...new Set(products.map((item) => item.price))),
@@ -22,33 +23,7 @@ const minMaxYear: RangeMinMax = [
 export const CheckboxGenre: FC<PropsWithChildren<SortTableProps>> = ({
   sortItems: sortProducts,
 }) => {
-  const [checkBox, setCheckBox] = useState({});
-  // const [userinfo, setUserInfo] = useState({
-  // genres: [],
-  // });
-  // const handleChange = (e: { target: { value: unknown; checked: unknown } }) => {
-  // Destructuring
-  // const { value, checked } = e.target;
-  // const { genres } = userinfo;
-
-  // console.log(`${value} is ${checked}`);
-
-  // Case 1 : The user checks the box
-  // if (checked) {
-  //   setUserInfo({
-  //     genres: [...genres, value],
-  //   });
-  // }
-  // Case 2  : The user unchecks the box
-  // else {
-  // setUserInfo({
-  // genres: genres.filter((e) => e !== value),
-  // });
-  // }
-  // };
-  const uniqCategory = [...new Set(products.map((item) => item.category))];
-  const uniqFormat = [...new Set(products.map((item) => item.format))];
-
+  const onChange = () => console.log(true);
   return (
     <div className="sort-box">
       <FormGroup className="checkBox-format">
