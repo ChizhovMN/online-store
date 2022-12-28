@@ -18,14 +18,9 @@ import { useDispatch } from 'react-redux';
 type SortTableProps = {
   sortItems: ProductType[];
 };
-const minMaxPrice: RangeMinMax = [
-  Math.min(...new Set(products.map((item) => item.price))),
-  Math.max(...new Set(products.map((item) => item.price))),
-];
-const minMaxYear: RangeMinMax = [
-  Math.min(...new Set(products.map((item) => item.year))),
-  Math.max(...new Set(products.map((item) => item.year))),
-];
+const listOfPrices = [...new Set(products.map((item) => item.price))];
+const minMaxPrice: RangeMinMax = [Math.min(...listOfPrices), Math.max(...listOfPrices)];
+const minMaxYear: RangeMinMax = [Math.min(...listOfPrices), Math.max(...listOfPrices)];
 export const CheckboxGenre: FC<PropsWithChildren<SortTableProps>> = ({
   sortItems: sortProducts,
 }) => {
