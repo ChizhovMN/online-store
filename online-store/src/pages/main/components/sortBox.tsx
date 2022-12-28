@@ -7,7 +7,12 @@ import { products } from '../../../products';
 import { RangeSlider } from './dualSliders';
 import './sortBox.css';
 import { ProductType, RangeMinMax } from '../../../types';
-import { checkFilters, uniqCategory, uniqFormat } from '../../../store/store';
+import {
+  checkFiltersFormat,
+  checkFiltersCategory,
+  uniqCategory,
+  uniqFormat,
+} from '../../../store/store';
 import { useDispatch } from 'react-redux';
 
 type SortTableProps = {
@@ -26,7 +31,8 @@ export const CheckboxGenre: FC<PropsWithChildren<SortTableProps>> = ({
 }) => {
   const dispatch = useDispatch();
   const onChange = (el: string) => {
-    dispatch(checkFilters(el));
+    dispatch(checkFiltersFormat(el));
+    dispatch(checkFiltersCategory(el));
   };
   return (
     <div className="sort-box">
