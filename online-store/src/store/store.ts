@@ -5,8 +5,9 @@ import {
   createSelector,
   Selector,
 } from '@reduxjs/toolkit';
+import { minMaxPrice, minMaxYear } from '../pages/main/components/sortBox';
 import { products } from '../products';
-import { CartEntry, ProductType } from '../types';
+import { CartEntry, ProductType, RangeMinMax } from '../types';
 
 export const uniqCategory = [...new Set(products.map((item) => item.category))];
 export const uniqFormat = [...new Set(products.map((item) => item.format))];
@@ -21,6 +22,12 @@ export type RootState = {
     format: {
       allValue: string[];
       currentValue: string[];
+    };
+    year: {
+      value: RangeMinMax;
+    };
+    price: {
+      value: RangeMinMax;
     };
   };
   sort: {
@@ -39,6 +46,12 @@ const initialState: RootState = {
     format: {
       allValue: [],
       currentValue: [],
+    },
+    year: {
+      value: minMaxYear,
+    },
+    price: {
+      value: minMaxPrice,
     },
   },
   sort: {
@@ -79,6 +92,8 @@ export const updateCart = createAction<CartEntry>('product/updateCart');
 export const deleteFilters = createAction<ProductType[]>('product/deleteFilters');
 export const checkFiltersFormat = createAction<string>('product/checkFiltersFormat');
 export const checkFiltersCategory = createAction<string>('product/checkFiltersCategory');
+export const checkPriceSlider = createAction<RangeMinMax>('product/checkPriceSlider');
+export const checkSliderYear = createAction<RangeMinMax>('producct/checkSliderYear');
 
 const productsReducer = createReducer(initialState, (builder) => {
   builder
@@ -111,6 +126,14 @@ const productsReducer = createReducer(initialState, (builder) => {
     .addCase(checkFiltersCategory, (state, action) => {
       const chexboxValue = action.payload;
       checkboxValueChecker(state.filters.genre, chexboxValue);
+    })
+    .addCase(checkPriceSlider, (state, action) => {
+      const range = action.payload;
+      state.filters.price.value = [Math.min(...range), Math.max(...range)];
+    })
+    .addCase(checkSliderYear, (state, action) => {
+      const range = action.payload;
+      state.filters.year.value = [Math.min(...range), Math.max(...range)];
     });
 });
 export const selectProducts: Selector<RootState, RootState['products']> = createSelector(
@@ -186,9 +209,26 @@ export const selectFilterGenreProducts = createSelector(
     const filterProducts = products.filter((item) => {
       if (format.length) {
         return format.includes(item.category);
+      } else {
+        return [];
       }
     });
-    return filterProducts.length === 0 ? products : filterProducts;
+    return filterProducts;
+  }
+);
+export const selectRange = createSelector(
+  [selectFilterGenreProducts, selectFilter],
+  (products, filter) => {
+    const priceRange = filter.price.value;
+    const yearRange = filter.year.value;
+    const filterProducts = products.filter((item) => {
+      if (item.price >= priceRange[0] && item.price <= priceRange[1]) {
+        if (item.year >= yearRange[0] && item.year <= yearRange[1]) {
+          return item;
+        }
+      }
+    });
+    return filterProducts;
   }
 );
 export const store = configureStore({ reducer: productsReducer });

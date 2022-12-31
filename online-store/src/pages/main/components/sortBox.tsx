@@ -19,8 +19,10 @@ type SortTableProps = {
   sortItems: ProductType[];
 };
 const listOfPrices = [...new Set(products.map((item) => item.price))];
-const minMaxPrice: RangeMinMax = [Math.min(...listOfPrices), Math.max(...listOfPrices)];
-const minMaxYear: RangeMinMax = [Math.min(...listOfPrices), Math.max(...listOfPrices)];
+const listOfYears = [...new Set(products.map((item) => item.year))];
+
+export const minMaxPrice: RangeMinMax = [Math.min(...listOfPrices), Math.max(...listOfPrices)];
+export const minMaxYear: RangeMinMax = [Math.min(...listOfYears), Math.max(...listOfYears)];
 export const CheckboxGenre: FC<PropsWithChildren<SortTableProps>> = ({
   sortItems: sortProducts,
 }) => {
@@ -33,25 +35,25 @@ export const CheckboxGenre: FC<PropsWithChildren<SortTableProps>> = ({
     <div className="sort-box">
       <FormGroup className="checkBox-format">
         <h3>Format</h3>
-        {uniqFormat.map((el) => (
+        {uniqFormat.map((key) => (
           <FormControlLabel
-            key={el}
-            control={<Checkbox value={el} />}
-            label={el}
-            onChange={() => onChange(el)}
+            key={key}
+            control={<Checkbox value={key} />}
+            label={key}
+            onChange={() => onChange(key)}
           />
         ))}
       </FormGroup>
       <div className="checkBox-category">
         <h3 className="titleGenre">Genre</h3>
         <FormGroup className="checkList">
-          {uniqCategory.map((el) => (
+          {uniqCategory.map((key) => (
             <FormControlLabel
               className="checkLabel"
-              key={el}
-              control={<Checkbox value={el} />}
-              label={el}
-              onChange={() => onChange(el)}
+              key={key}
+              control={<Checkbox value={key} />}
+              label={key}
+              onChange={() => onChange(key)}
             />
           ))}
         </FormGroup>
