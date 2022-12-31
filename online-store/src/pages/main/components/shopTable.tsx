@@ -23,6 +23,7 @@ type ShopTableProps = {
 const ShopTable: FC<PropsWithChildren<ShopTableProps>> = ({ items: products }) => {
   const [itemView, setItemView] = useState(ItemViewType.Large);
   const ItemView = itemViewComponentMapping[itemView] ?? TableItemBig;
+  console.log('PRODUCTS', products);
   return (
     <div className="shop-table">
       <div className="shop-sort">
@@ -52,9 +53,11 @@ const ShopTable: FC<PropsWithChildren<ShopTableProps>> = ({ items: products }) =
           </ToggleButton>
         </ToggleButtonGroup>
       </div>
-      {products.map((item: ProductType) => (
-        <ItemView {...item} key={item.id} />
-      ))}
+      {products.length ? (
+        products.map((item: ProductType) => <ItemView {...item} key={item.id} />)
+      ) : (
+        <div className="not-found"> No products found!</div>
+      )}
     </div>
   );
 };
