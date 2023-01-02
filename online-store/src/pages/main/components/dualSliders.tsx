@@ -12,7 +12,6 @@ function valuetext(value: number) {
 type RangeSliderProps = {
   range: RangeMinMax;
   currencySymbol: string;
-  filterItemsProperty: ProductType[];
   property: keyof ProductType;
 };
 export const RangeSlider: FC<PropsWithChildren<RangeSliderProps>> = ({
@@ -23,11 +22,12 @@ export const RangeSlider: FC<PropsWithChildren<RangeSliderProps>> = ({
   const dispatch = useDispatch();
   const handleChange = (event: Event, newValue: number | number[]) => {
     setValue(newValue as number[]);
-    if (minMaxPrice[0] <= value[0] && value[1] <= minMaxPrice[1]) {
-      dispatch(checkPriceSlider([value[0], value[1]]));
+    const minMax = newValue as number[];
+    if (minMaxPrice[0] <= minMax[0] && minMax[1] <= minMaxPrice[1]) {
+      dispatch(checkPriceSlider([minMax[0], minMax[1]]));
     }
-    if (minMaxYear[0] <= value[0] && value[1] <= minMaxYear[1]) {
-      dispatch(checkSliderYear([value[0], value[1]]));
+    if (minMaxYear[0] <= minMax[0] && minMax[1] <= minMaxYear[1]) {
+      dispatch(checkSliderYear([minMax[0], minMax[1]]));
     }
   };
   const marks = [

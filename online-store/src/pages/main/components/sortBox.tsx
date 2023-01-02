@@ -59,18 +59,8 @@ export const CheckboxGenre: FC<PropsWithChildren<SortTableProps>> = ({
         </FormGroup>
       </div>
       <div className="sliders">
-        <RangeSlider
-          range={minMaxPrice}
-          currencySymbol={'$'}
-          filterItemsProperty={sortProducts}
-          property={'price'}
-        />
-        <RangeSlider
-          range={minMaxYear}
-          currencySymbol={''}
-          filterItemsProperty={sortProducts}
-          property={'year'}
-        />
+        <RangeSlider range={minMaxPrice} currencySymbol={'$'} property={'price'} />
+        <RangeSlider range={minMaxYear} currencySymbol={''} property={'year'} />
       </div>
     </div>
   );
