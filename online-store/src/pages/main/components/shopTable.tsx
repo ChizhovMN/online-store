@@ -7,6 +7,7 @@ import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 import GridViewSharpIcon from '@mui/icons-material/GridViewSharp';
 import { TableItemSmall } from './tableItemSmall';
 import SelectSmall from './selectSort';
+import SearchField from './searchField';
 
 const ItemViewType = {
   Large: 'large',
@@ -33,7 +34,9 @@ const ShopTable: FC<PropsWithChildren<ShopTableProps>> = ({ items: products }) =
         <div className="products-found">
           Found: {products.length ? products.length : 0} products
         </div>
-        <div className="search">search</div>
+        <div className="search">
+          <SearchField />
+        </div>
         <ToggleButtonGroup orientation="horizontal" exclusive className="size-btn-wrapper">
           <ToggleButton
             value="grid"

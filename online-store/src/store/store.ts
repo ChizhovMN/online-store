@@ -29,6 +29,7 @@ export type RootState = {
     price: {
       value: RangeMinMax;
     };
+    search: string;
   };
   sort: {
     by: 'price' | 'name' | 'none';
@@ -53,6 +54,7 @@ const initialState: RootState = {
     price: {
       value: minMaxPrice,
     },
+    search: '',
   },
   sort: {
     by: 'none',
@@ -93,7 +95,8 @@ export const deleteFilters = createAction<ProductType[]>('product/deleteFilters'
 export const checkFiltersFormat = createAction<string>('product/checkFiltersFormat');
 export const checkFiltersCategory = createAction<string>('product/checkFiltersCategory');
 export const checkPriceSlider = createAction<RangeMinMax>('product/checkPriceSlider');
-export const checkSliderYear = createAction<RangeMinMax>('producct/checkSliderYear');
+export const checkSliderYear = createAction<RangeMinMax>('product/checkSliderYear');
+export const checkSearchField = createAction<string>('product/checkSearchField');
 
 const productsReducer = createReducer(initialState, (builder) => {
   builder
@@ -134,6 +137,9 @@ const productsReducer = createReducer(initialState, (builder) => {
     .addCase(checkSliderYear, (state, action) => {
       const range = action.payload;
       state.filters.year.value = [Math.min(...range), Math.max(...range)];
+    })
+    .addCase(checkSearchField, (state, action) => {
+      state.filters.search = action.payload;
     });
 });
 export const selectProducts: Selector<RootState, RootState['products']> = createSelector(
@@ -231,6 +237,17 @@ export const selectRange = createSelector(
     return filterProducts;
   }
 );
+export const selectFieldSearch = createSelector([selectRange, selectFilter], (products, search) => {
+  const searchProducts = products.filter(
+    (item) =>
+      item.group.toLowerCase().includes(search.search.toLowerCase()) ||
+      item.album.toLowerCase().includes(search.search.toLowerCase()) ||
+      item.category.toLowerCase().includes(search.search.toLowerCase()) ||
+      item.format.toLowerCase().includes(search.search.toLowerCase()) ||
+      item.price.toString().includes(search.search)
+  );
+  return searchProducts;
+});
 export const store = configureStore({ reducer: productsReducer });
 
 export type AppDispatch = typeof store.dispatch;
