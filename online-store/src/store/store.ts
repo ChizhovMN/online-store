@@ -36,6 +36,7 @@ export type RootState = {
     direction: 'asc' | 'desc';
   };
   cart: { entries: CartEntry[]; chunkLength: number };
+  view: string;
 };
 const initialState: RootState = {
   products: [],
@@ -64,6 +65,7 @@ const initialState: RootState = {
     entries: [],
     chunkLength: 5,
   },
+  view: 'large',
 };
 
 const checkboxValueChecker = (
@@ -101,6 +103,7 @@ export const checkPriceSlider = createAction<RangeMinMax>('product/checkPriceSli
 export const checkSliderYear = createAction<RangeMinMax>('product/checkSliderYear');
 export const checkSearchField = createAction<string>('product/checkSearchField');
 export const chunkItemsLength = createAction<number>('product/chunkItemsLength');
+export const checkView = createAction<string>('product/checkView');
 
 const productsReducer = createReducer(initialState, (builder) => {
   builder
@@ -147,6 +150,9 @@ const productsReducer = createReducer(initialState, (builder) => {
     })
     .addCase(chunkItemsLength, (state, action) => {
       state.cart.chunkLength = action.payload;
+    })
+    .addCase(checkView, (state, action) => {
+      state.view = action.payload;
     });
 });
 export const selectProducts: Selector<RootState, RootState['products']> = createSelector(
@@ -158,7 +164,7 @@ export const selectProductsAsList: Selector<RootState, ProductType[]> = createSe
   [selectProducts],
   (p) => Object.values(p)
 );
-
+export const selectView = createSelector([(st: RootState) => st.view], (view) => view);
 export const selectSort: Selector<RootState, RootState['sort']> = createSelector(
   [(st: RootState) => st.sort],
   (v) => v
