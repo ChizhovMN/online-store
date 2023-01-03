@@ -10,7 +10,7 @@ const Main = () => {
   const filterProducts = useSelector(selectFieldSearch);
   return (
     <div className="shop">
-      <CheckboxGenre sortItems={filterProducts} />
+      <CheckboxGenre />
       <ShopTable items={filterProducts} />
     </div>
   );

@@ -39,8 +39,12 @@ function Cart() {
   const total = useSelector(selectCartTotal);
   const dispatch = useDispatch();
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setInputValue(Number(event.target.value));
-    dispatch(chunkItemsLength(+event.target.value));
+    setInputValue(
+      Number(event.target.value && event.target.value !== '0' ? event.target.value : 1)
+    );
+    dispatch(
+      chunkItemsLength(+(event.target.value && event.target.value !== '0' ? event.target.value : 1))
+    );
   };
   if (page > cartItems.length) {
     setPage(cartItems.length);
@@ -60,7 +64,7 @@ function Cart() {
                 className="cart-field"
                 min={1}
                 step={1}
-                value={inputValue}
+                value={inputValue ? inputValue : 1}
                 onChange={handleChange}
               />
               Page:
