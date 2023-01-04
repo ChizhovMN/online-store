@@ -7,7 +7,7 @@ import {
 } from '@reduxjs/toolkit';
 import { minMaxPrice, minMaxYear } from '../pages/main/components/sortBox';
 import { products } from '../products';
-import { CartEntry, ProductType, RangeMinMax } from '../types';
+import { CartEntry, DiscountType, ProductType, RangeMinMax } from '../types';
 
 export const uniqCategory = [...new Set(products.map((item) => item.category))];
 export const uniqFormat = [...new Set(products.map((item) => item.format))];
@@ -35,7 +35,15 @@ export type RootState = {
     by: 'price' | 'name' | 'none';
     direction: 'asc' | 'desc';
   };
-  cart: { entries: CartEntry[]; chunkLength: number };
+  cart: {
+    entries: CartEntry[];
+    chunkLength: number;
+    promo: string;
+    discount: {
+      all: DiscountType[];
+      current: DiscountType[];
+    };
+  };
   view: string;
 };
 const initialState: RootState = {
@@ -64,6 +72,14 @@ const initialState: RootState = {
   cart: {
     entries: [],
     chunkLength: 5,
+    promo: '',
+    discount: {
+      all: [
+        { discount: 'rs', procent: 10, name: 'Rolling Scopes School' },
+        { discount: 'epm', procent: 15, name: 'EPUM' },
+      ],
+      current: [],
+    },
   },
   view: 'large',
 };
@@ -104,6 +120,9 @@ export const checkSliderYear = createAction<RangeMinMax>('product/checkSliderYea
 export const checkSearchField = createAction<string>('product/checkSearchField');
 export const chunkItemsLength = createAction<number>('product/chunkItemsLength');
 export const checkView = createAction<string>('product/checkView');
+export const checkDiscount = createAction<string>('product/checkDiscount');
+export const addDiscount = createAction<string>('product/addDiscount');
+export const deleteDiscount = createAction<string>('product/deleteDiscount');
 
 const productsReducer = createReducer(initialState, (builder) => {
   builder
@@ -153,6 +172,22 @@ const productsReducer = createReducer(initialState, (builder) => {
     })
     .addCase(checkView, (state, action) => {
       state.view = action.payload;
+    })
+    .addCase(checkDiscount, (state, action) => {
+      state.cart.promo = action.payload;
+    })
+    .addCase(addDiscount, (state, action) => {
+      const discount = state.cart.discount.all.find(
+        (item) => item.discount === action.payload.toLowerCase()
+      );
+      if (discount) {
+        state.cart.discount.current.push(discount);
+      }
+    })
+    .addCase(deleteDiscount, (state, action) => {
+      state.cart.discount.current = state.cart.discount.current.filter(
+        (item) => item.discount !== action.payload
+      );
     });
 });
 export const selectProducts: Selector<RootState, RootState['products']> = createSelector(
@@ -184,7 +219,6 @@ export const selectCartShopProducts: Selector<RootState, CartProduct[]> = create
       )
       .filter((x): x is CartProduct => !!x)
 );
-
 export const selectCartTotal = createSelector([selectCartShopProducts], (products) =>
   products.reduce((acc, { quantity, price }) => acc + quantity * price, 0)
 );
