@@ -4,6 +4,14 @@
   gap: 20px;
 }
 
+.product-path {
+  display: flex;
+  justify-content: space-between;
+  margin: 2rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
 .product-images {
   flex-grow: 1;
   display: flex;

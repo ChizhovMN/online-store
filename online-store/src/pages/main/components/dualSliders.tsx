@@ -1,7 +1,10 @@
 import React, { FC, PropsWithChildren } from 'react';
 import Box from '@mui/material/Box';
 import Slider from '@mui/material/Slider';
-import { Product, RangeMinMax } from '../../../types';
+import { ProductType, RangeMinMax } from '../../../types';
+import { useDispatch, useSelector } from 'react-redux';
+import { checkPriceSlider, checkSliderYear, selectFilter } from '../../../store/store';
+import { minMaxPrice, minMaxYear } from './sortBox';
 
 function valuetext(value: number) {
   return `${value}`;
@@ -9,21 +12,26 @@ function valuetext(value: number) {
 type RangeSliderProps = {
   range: RangeMinMax;
   currencySymbol: string;
-  filterItemsProperty: Product[];
-  property: keyof Product;
+  property: keyof ProductType;
 };
 export const RangeSlider: FC<PropsWithChildren<RangeSliderProps>> = ({
   range: minMaxValues,
   currencySymbol,
-  filterItemsProperty,
-  property,
 }) => {
+  const filter = useSelector(selectFilter);
+  const year = filter.year.value;
+  const price = filter.price.value;
   const [value, setValue] = React.useState<number[]>([minMaxValues[0], minMaxValues[1]]);
+  const dispatch = useDispatch();
   const handleChange = (event: Event, newValue: number | number[]) => {
     setValue(newValue as number[]);
-    const newData = filterItemsProperty.filter(
-      (item) => value[0] <= item[property] && item[property] <= value[1]
-    );
+    const minMax = newValue as number[];
+    if (minMaxPrice[0] <= minMax[0] && minMax[1] <= minMaxPrice[1]) {
+      dispatch(checkPriceSlider([minMax[0], minMax[1]]));
+    }
+    if (minMaxYear[0] <= minMax[0] && minMax[1] <= minMaxYear[1]) {
+      dispatch(checkSliderYear([minMax[0], minMax[1]]));
+    }
   };
   const marks = [
     {
@@ -38,7 +46,7 @@ export const RangeSlider: FC<PropsWithChildren<RangeSliderProps>> = ({
   return (
     <Box sx={{ width: 300 }}>
       <Slider
-        value={value}
+        value={minMaxPrice[0] <= value[0] && value[1] <= minMaxPrice[1] ? price : year}
         step={1}
         onChange={handleChange}
         valueLabelDisplay="auto"
