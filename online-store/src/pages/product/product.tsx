@@ -7,7 +7,7 @@ import KeyboardDoubleArrowRightIcon from '@mui/icons-material/KeyboardDoubleArro
 import '../product/product.css';
 import { AddButton } from '../main/components/addButton';
 import { BuyButton } from '../buyButton';
-import BasicModal from '../main/components/modal';
+import BasicModal from '../modal';
 
 export function Product() {
   const { id } = useParams();

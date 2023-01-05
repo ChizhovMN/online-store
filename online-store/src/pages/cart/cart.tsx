@@ -10,7 +10,7 @@ import {
 } from '../../store/store';
 import '../cart/cart.css';
 import { AddButton } from '../main/components/addButton';
-import BasicModal from '../main/components/modal';
+import BasicModal from '../modal';
 import KeyboardDoubleArrowRightIcon from '@mui/icons-material/KeyboardDoubleArrowRight';
 import KeyboardDoubleArrowLeftIcon from '@mui/icons-material/KeyboardDoubleArrowLeft';
 import DiscountField from './discountField';
