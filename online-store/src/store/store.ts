@@ -5,8 +5,9 @@ import {
   createSelector,
   Selector,
 } from '@reduxjs/toolkit';
+import { minMaxPrice, minMaxYear } from '../pages/main/components/sortBox';
 import { products } from '../products';
-import { CartEntry, ProductType } from '../types';
+import { CartEntry, DiscountType, ProductType, RangeMinMax } from '../types';
 
 export const uniqCategory = [...new Set(products.map((item) => item.category))];
 export const uniqFormat = [...new Set(products.map((item) => item.format))];
@@ -22,12 +23,28 @@ export type RootState = {
       allValue: string[];
       currentValue: string[];
     };
+    year: {
+      value: RangeMinMax;
+    };
+    price: {
+      value: RangeMinMax;
+    };
+    search: string;
   };
   sort: {
     by: 'price' | 'name' | 'none';
     direction: 'asc' | 'desc';
   };
-  cart: { entries: CartEntry[] };
+  cart: {
+    entries: CartEntry[];
+    chunkLength: number;
+    promo: string;
+    discount: {
+      all: DiscountType[];
+      current: DiscountType[];
+    };
+  };
+  view: string;
 };
 const initialState: RootState = {
   products: [],
@@ -40,12 +57,31 @@ const initialState: RootState = {
       allValue: [],
       currentValue: [],
     },
+    year: {
+      value: minMaxYear,
+    },
+    price: {
+      value: minMaxPrice,
+    },
+    search: '',
   },
   sort: {
     by: 'none',
     direction: 'asc',
   },
-  cart: { entries: [] },
+  cart: {
+    entries: [],
+    chunkLength: 5,
+    promo: '',
+    discount: {
+      all: [
+        { discount: 'rs', procent: 10, name: 'Rolling Scopes School' },
+        { discount: 'epm', procent: 15, name: 'EPUM' },
+      ],
+      current: [],
+    },
+  },
+  view: 'large',
 };
 
 const checkboxValueChecker = (
@@ -79,6 +115,15 @@ export const updateCart = createAction<CartEntry>('product/updateCart');
 export const deleteFilters = createAction<ProductType[]>('product/deleteFilters');
 export const checkFiltersFormat = createAction<string>('product/checkFiltersFormat');
 export const checkFiltersCategory = createAction<string>('product/checkFiltersCategory');
+export const checkPriceSlider = createAction<RangeMinMax>('product/checkPriceSlider');
+export const checkSliderYear = createAction<RangeMinMax>('product/checkSliderYear');
+export const checkSearchField = createAction<string>('product/checkSearchField');
+export const chunkItemsLength = createAction<number>('product/chunkItemsLength');
+export const checkView = createAction<string>('product/checkView');
+export const checkDiscount = createAction<string>('product/checkDiscount');
+export const addDiscount = createAction<string>('product/addDiscount');
+export const deleteDiscount = createAction<string>('product/deleteDiscount');
+export const refreshCart = createAction<boolean>('product/refreshCart');
 
 const productsReducer = createReducer(initialState, (builder) => {
   builder
@@ -111,6 +156,44 @@ const productsReducer = createReducer(initialState, (builder) => {
     .addCase(checkFiltersCategory, (state, action) => {
       const chexboxValue = action.payload;
       checkboxValueChecker(state.filters.genre, chexboxValue);
+    })
+    .addCase(checkPriceSlider, (state, action) => {
+      const range = action.payload;
+      state.filters.price.value = [Math.min(...range), Math.max(...range)];
+    })
+    .addCase(checkSliderYear, (state, action) => {
+      const range = action.payload;
+      state.filters.year.value = [Math.min(...range), Math.max(...range)];
+    })
+    .addCase(checkSearchField, (state, action) => {
+      state.filters.search = action.payload;
+    })
+    .addCase(chunkItemsLength, (state, action) => {
+      state.cart.chunkLength = action.payload;
+    })
+    .addCase(checkView, (state, action) => {
+      state.view = action.payload;
+    })
+    .addCase(checkDiscount, (state, action) => {
+      state.cart.promo = action.payload;
+    })
+    .addCase(addDiscount, (state, action) => {
+      const discount = state.cart.discount.all.find(
+        (item) => item.discount === action.payload.toLowerCase()
+      );
+      if (discount) {
+        state.cart.discount.current.push(discount);
+      }
+    })
+    .addCase(deleteDiscount, (state, action) => {
+      state.cart.discount.current = state.cart.discount.current.filter(
+        (item) => item.discount !== action.payload
+      );
+    })
+    .addCase(refreshCart, (state, action) => {
+      if (action.payload) {
+        state.cart.entries = [];
+      }
     });
 });
 export const selectProducts: Selector<RootState, RootState['products']> = createSelector(
@@ -122,7 +205,7 @@ export const selectProductsAsList: Selector<RootState, ProductType[]> = createSe
   [selectProducts],
   (p) => Object.values(p)
 );
-
+export const selectView = createSelector([(st: RootState) => st.view], (view) => view);
 export const selectSort: Selector<RootState, RootState['sort']> = createSelector(
   [(st: RootState) => st.sort],
   (v) => v
@@ -131,7 +214,7 @@ export const selectCart: Selector<RootState, RootState['cart']> = createSelector
   [(st: RootState) => st.cart],
   (c) => c
 );
-type CartProduct = ProductType & { quantity: CartEntry['count'] };
+export type CartProduct = ProductType & { quantity: CartEntry['count'] };
 
 export const selectCartShopProducts: Selector<RootState, CartProduct[]> = createSelector(
   [selectProducts, selectCart],
@@ -142,7 +225,6 @@ export const selectCartShopProducts: Selector<RootState, CartProduct[]> = create
       )
       .filter((x): x is CartProduct => !!x)
 );
-
 export const selectCartTotal = createSelector([selectCartShopProducts], (products) =>
   products.reduce((acc, { quantity, price }) => acc + quantity * price, 0)
 );
@@ -186,11 +268,39 @@ export const selectFilterGenreProducts = createSelector(
     const filterProducts = products.filter((item) => {
       if (format.length) {
         return format.includes(item.category);
+      } else {
+        return [];
       }
     });
-    return filterProducts.length === 0 ? products : filterProducts;
+    return filterProducts;
   }
 );
+export const selectRange = createSelector(
+  [selectFilterGenreProducts, selectFilter],
+  (products, filter) => {
+    const priceRange = filter.price.value;
+    const yearRange = filter.year.value;
+    const filterProducts = products.filter((item) => {
+      if (item.price >= priceRange[0] && item.price <= priceRange[1]) {
+        if (item.year >= yearRange[0] && item.year <= yearRange[1]) {
+          return item;
+        }
+      }
+    });
+    return filterProducts;
+  }
+);
+export const selectFieldSearch = createSelector([selectRange, selectFilter], (products, search) => {
+  const searchProducts = products.filter(
+    (item) =>
+      item.group.toLowerCase().includes(search.search.toLowerCase()) ||
+      item.album.toLowerCase().includes(search.search.toLowerCase()) ||
+      item.category.toLowerCase().includes(search.search.toLowerCase()) ||
+      item.format.toLowerCase().includes(search.search.toLowerCase()) ||
+      item.price.toString().includes(search.search)
+  );
+  return searchProducts;
+});
 export const store = configureStore({ reducer: productsReducer });
 
 export type AppDispatch = typeof store.dispatch;
