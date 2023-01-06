@@ -30,19 +30,6 @@ export const CheckboxGenre = () => {
   };
   return (
     <div className="sort-box">
-      <FormGroup className="checkBox-format">
-        <div className="format_head>Format</div>
-        {uniqFormat.map((key) => (
-          <FormControlLabel
-            key={key}
-            className="checkLabel"
-            control={<Checkbox value={key} />}
-            checked={filters.format.currentValue.includes(key) ? true : false}
-            label={key}
-            onChange={() => onChange(key)}
-          />
-        ))}
-      </FormGroup>
       <div className="checkBox-category">
         <div className="genre_head">Genre</div>
         <FormGroup className="checkList">
@@ -58,6 +45,19 @@ export const CheckboxGenre = () => {
           ))}
         </FormGroup>
       </div>
+      <FormGroup id="checkBox-format">
+        <div className="format_head">Format</div>
+        {uniqFormat.map((key) => (
+          <FormControlLabel
+            key={key}
+            className="checkLabel"
+            control={<Checkbox value={key} />}
+            checked={filters.format.currentValue.includes(key) ? true : false}
+            label={key}
+            onChange={() => onChange(key)}
+          />
+        ))}
+      </FormGroup>
       <div className="sliders">
         <RangeSlider range={minMaxPrice} currencySymbol={'$'} property={'price'} />
         <RangeSlider range={minMaxYear} currencySymbol={''} property={'year'} />
