@@ -4,13 +4,24 @@
     align-items: center;
     background-color: white;
     padding: 10px;
+    flex-wrap: wrap;
 }
 
 .logo-link {
     display: flex;
     align-items: center;
+    text-decoration: none;
+    color: black;
+    font-size: 3.2em;
+    font-family:'Aladin', 'Arial Narrow', Arial, sans-serif !important;
 }
 
 .logo-image {
     width: 80px;
+}
+
+@media screen and (max-width: 450px) {
+    .logo-link {
+        font-size: 2.2em;
+    }
 }

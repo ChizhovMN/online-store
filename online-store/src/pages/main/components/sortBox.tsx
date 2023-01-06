@@ -31,10 +31,11 @@ export const CheckboxGenre = () => {
   return (
     <div className="sort-box">
       <FormGroup className="checkBox-format">
-        <h3>Format</h3>
+        <div className="format_head>Format</div>
         {uniqFormat.map((key) => (
           <FormControlLabel
             key={key}
+            className="checkLabel"
             control={<Checkbox value={key} />}
             checked={filters.format.currentValue.includes(key) ? true : false}
             label={key}
@@ -43,7 +44,7 @@ export const CheckboxGenre = () => {
         ))}
       </FormGroup>
       <div className="checkBox-category">
-        <h3 className="titleGenre">Genre</h3>
+        <div className="genre_head">Genre</div>
         <FormGroup className="checkList">
           {uniqCategory.map((key) => (
             <FormControlLabel
