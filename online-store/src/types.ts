@@ -17,3 +17,9 @@ export type CartEntry = {
   productId: ProductType['id'];
   count: number;
 };
+
+export type DiscountType = {
+  discount: string;
+  name: string;
+  procent: number;
+};

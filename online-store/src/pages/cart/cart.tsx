@@ -13,6 +13,9 @@ import { AddButton } from '../main/components/addButton';
 import BasicModal from '../main/components/modal';
 import KeyboardDoubleArrowRightIcon from '@mui/icons-material/KeyboardDoubleArrowRight';
 import KeyboardDoubleArrowLeftIcon from '@mui/icons-material/KeyboardDoubleArrowLeft';
+import DiscountField from './discountField';
+import { DiscountAdder } from './addDiscount';
+import { PromoActive } from './promoActive';
 
 function Cart() {
   const length = useSelector(selectCart);
@@ -35,8 +38,9 @@ function Cart() {
     },
     []
   );
-  console.log('cartItems', cartItems);
   const total = useSelector(selectCartTotal);
+  const promo = useSelector(selectCart).discount.current;
+  const discount = 1 - promo.reduce((acc, item) => (acc += item.procent), 0) / 100;
   const dispatch = useDispatch();
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue(
@@ -105,7 +109,17 @@ function Cart() {
           <div className="cart-count">
             Products: {cartItems.flat().reduce((acc, item) => acc + item.quantity, 0)}
           </div>
-          <div className="cart-total">Total: {total.toFixed(2)}$</div>
+          {promo.length > 0 ? (
+            <div>
+              <div className="cart-total decoration">Total: {total.toFixed(2)}$</div>
+              <div className="cart-total">Total:{(total * discount).toFixed(2)}$</div>
+            </div>
+          ) : (
+            <div className="cart-total">Total: {total.toFixed(2)}$</div>
+          )}
+          <PromoActive />
+          <DiscountField />
+          <DiscountAdder />
           <BasicModal />
         </div>
       </div>
