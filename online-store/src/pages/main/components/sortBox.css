@@ -1,27 +1,213 @@
+@import url('https://fonts.googleapis.com/css2?family=Aladin&display=swap');
+
 .sort-box {
     display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    background: url(../../../assets/images/grif.png);
+    background-repeat: no-repeat;
+    background-position-y: top;
+    background-size: contain; 
+    margin-top: -75px;
 }
 
-.checkBox-format {
+#checkBox-format {
     flex-grow: 1;
+    flex-basis: 20%;
+    align-items: center;
+    display: block;
+    padding-top: 42px;
+    margin-top: 9%;
+}
+
+.format_head {
+    transform: rotate(15deg);
+    color: black;
+    font-family:'Aladin', 'Arial Narrow', Arial, sans-serif;
+    font-size: 2.5em;
+    padding-bottom: 16px;
+    padding-left: 8%;
+}
+
+.genre_head {
+    color: white;
+    font-family:'Aladin', 'Arial Narrow', Arial, sans-serif;
+    font-size: 2.5em;
+    padding-bottom: 10px;
 }
 
 .checkBox-category {
     display: flex;
     flex-grow: 1;
     flex-direction: column;
+    align-items: center;
+    flex-basis: 68%;
+    padding-top: 115px;
 }
 
 .checkList {
-    display: flex;
-    flex-flow: wrap;
+    display: flex !important;
+    flex-flow: wrap !important;
 }
 
 .checkLabel {
     display: flex;
-    flex-grow: 1
+    flex-grow: 1;
 }
 
-.titleGenre {
-    color: aquamarine;
+.checkLabel > span {
+    font-size: 1.2em;
+    color: rgba(0, 0, 0, 0.8);
+    font-family:'Aladin', 'Arial Narrow', Arial, sans-serif;
+}
+
+.sliders {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 50px;
+}
+
+@media screen and (max-width: 1250px) {
+    .format_head {
+        font-size: 2em;
+        width: 166px;
+        height: 60px;
+        margin-top: -15px;
+        margin-bottom: 40px;
+        border-radius: 40px;
+        background-color: hsl(50 33% 85% / 0.75);
+    }
+    
+    .genre_head {
+        font-size: 2em;
+    }
+ } 
+
+ @media screen and (max-width: 1150px) {
+    .format_head {
+        width: 120px;
+        height: 45px;
+    }
+    
+    .genre_head {
+        padding-top: 30px;
+    }
+
+    .checkBox-category {
+        padding-top: 65px;
+    }
+} 
+
+@media screen and (max-width: 1000px) {
+    .format_head {
+        font-size: 1.5em;
+        margin-bottom: 30px;
+        width: 105px;
+        height: 35px;
+    }
+    
+    .genre_head {
+        padding-top: 30px;
+        font-size: 1.5em;
+    }
+
+    .checkBox-category {
+        padding-top: 52px;
+    }
+} 
+
+@media screen and (max-width: 850px) {
+    .checkBox-category {
+        padding-top: 30px;
+    }
+
+    #checkBox-format {
+    padding-top: 30px;
+    }
+} 
+
+@media screen and (max-width: 750px) {
+    .format_head {
+        /* margin-bottom: 7px; */
+        width: 90px;
+        height: 30px;
+        padding-left: 0%;
+        font-size: 1.25em;
+    }
+    
+    .genre_head {
+        padding-top: 30px;
+    }
+
+    .checkBox-category {
+        padding-top: 20px;
+    }
+} 
+
+@media screen and (max-width: 620px) {
+
+    .format_head {
+        font-size: 1em;
+        width: 65px;
+    }
+
+    #checkBox-format {
+        padding-top: 30px;
+    }
+
+    .checkBox-category {
+        padding-top: 30px;
+    }
+    
+    .genre_head {
+        padding-top: 20px;
+        font-size: 1em;
+    }
+    
+    .checkLabel > span {
+        font-size: 10px;
+        padding: 0px !important;
+    }
+
+    .sliders {
+        gap: 0px;
+        margin-top: 15px;
+        width: 70%;
+    }
+} 
+
+@media screen and (max-width: 550px) {
+
+    #checkBox-format {
+        padding-top: 0px;
+        margin-top: 120px;
+    }
+
+    .checkBox-category {
+        padding-top: 80px;
+    }
+
+    .format_head {
+        transform: rotate(0deg);
+        padding-left: 10px;
+        width: 80px;
+        margin-bottom: 20px;
+    }
+    
+    .genre_head {
+        padding-top: 0px;
+        color: black;
+        width: 80px;
+        height: 30px;
+        border-radius: 40px;
+        padding-left: 15px;
+        background-color: hsl(50 33% 85% / 0.75);
+    }
+} 
+
+@media screen and (max-width: 400px) {
+    #checkBox-format {
+        margin-top: 95px;
+    }
 }

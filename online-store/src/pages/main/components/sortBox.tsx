@@ -31,19 +31,8 @@ export const CheckboxGenre: FC<PropsWithChildren<SortTableProps>> = ({
   };
   return (
     <div className="sort-box">
-      <FormGroup className="checkBox-format">
-        <h3>Format</h3>
-        {uniqFormat.map((el) => (
-          <FormControlLabel
-            key={el}
-            control={<Checkbox value={el} />}
-            label={el}
-            onChange={() => onChange(el)}
-          />
-        ))}
-      </FormGroup>
       <div className="checkBox-category">
-        <h3 className="titleGenre">Genre</h3>
+        <div className="genre_head">Genre</div>
         <FormGroup className="checkList">
           {uniqCategory.map((el) => (
             <FormControlLabel
@@ -56,6 +45,18 @@ export const CheckboxGenre: FC<PropsWithChildren<SortTableProps>> = ({
           ))}
         </FormGroup>
       </div>
+      <FormGroup id="checkBox-format">
+        <div className="format_head">Format</div>
+        {uniqFormat.map((el) => (
+          <FormControlLabel
+            className="checkLabel"
+            key={el}
+            control={<Checkbox value={el} />}
+            label={el}
+            onChange={() => onChange(el)}
+          />
+        ))}
+      </FormGroup>
       <div className="sliders">
         <RangeSlider
           range={minMaxPrice}
