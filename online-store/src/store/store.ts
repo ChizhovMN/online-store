@@ -123,6 +123,7 @@ export const checkView = createAction<string>('product/checkView');
 export const checkDiscount = createAction<string>('product/checkDiscount');
 export const addDiscount = createAction<string>('product/addDiscount');
 export const deleteDiscount = createAction<string>('product/deleteDiscount');
+export const refreshCart = createAction<boolean>('product/refreshCart');
 
 const productsReducer = createReducer(initialState, (builder) => {
   builder
@@ -188,6 +189,11 @@ const productsReducer = createReducer(initialState, (builder) => {
       state.cart.discount.current = state.cart.discount.current.filter(
         (item) => item.discount !== action.payload
       );
+    })
+    .addCase(refreshCart, (state, action) => {
+      if (action.payload) {
+        state.cart.entries = [];
+      }
     });
 });
 export const selectProducts: Selector<RootState, RootState['products']> = createSelector(
