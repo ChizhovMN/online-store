@@ -134,6 +134,9 @@ const productsReducer = createReducer(initialState, (builder) => {
       state.products = Object.fromEntries((action.payload ?? []).map((p) => [p.id, p]));
       state.filters.format.allValue = [...uniqFormat];
       state.filters.genre.allValue = [...uniqCategory];
+      if (localStorage.getItem('cart')) {
+        state.cart.entries = JSON.parse(localStorage.getItem('cart') || '{}');
+      }
     })
     .addCase(setProductsSortOptions, (state, action) => {
       state.sort = action.payload;
@@ -151,6 +154,7 @@ const productsReducer = createReducer(initialState, (builder) => {
         entry.count += count;
       }
       state.cart.entries = state.cart.entries.filter((p) => p.count > 0);
+      localStorage.setItem('cart', JSON.stringify(state.cart.entries));
     })
     .addCase(checkFiltersFormat, (state, action) => {
       const chexboxValue = action.payload;
