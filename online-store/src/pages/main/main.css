@@ -56,3 +56,13 @@
   align-items: center;
   justify-content: center;
 }
+
+.shop-buttons {
+  display: flex;
+  gap: 1rem;
+  margin: auto;
+}
+
+.shop-button {
+  width: 50%;
+}

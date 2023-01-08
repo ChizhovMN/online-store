@@ -1,4 +1,4 @@
-import React, { FC, PropsWithChildren } from 'react';
+import React, { FC, PropsWithChildren, useState } from 'react';
 import { ProductType } from '../../../types';
 import { TableItemBig } from './tableItemBig';
 import ViewModuleIcon from '@mui/icons-material/ViewModule';
@@ -9,7 +9,8 @@ import { TableItemSmall } from './tableItemSmall';
 import SelectSmall from './selectSort';
 import SearchField from './searchField';
 import { useDispatch, useSelector } from 'react-redux';
-import { checkView, selectView } from '../../../store/store';
+import { checkView, resetFilters, selectView } from '../../../store/store';
+import { Button } from '@mui/material';
 
 const ItemViewType = {
   Large: 'large',
@@ -26,10 +27,35 @@ type ShopTableProps = {
 const ShopTable: FC<PropsWithChildren<ShopTableProps>> = ({ items: products }) => {
   const dispatch = useDispatch();
   const viewSize = useSelector(selectView);
+  const [clipboardText, setClipboardText] = useState('');
+  const onClipBoard = () => {
+    clipboardText != window.location.href ? setClipboardText(window.location.href) : clipboardText;
+    navigator.clipboard.writeText(clipboardText);
+  };
   const view = ItemViewType.Large === viewSize ? ItemViewType.Large : ItemViewType.Small;
   const ItemView = itemViewComponentMapping[view] ?? TableItemBig;
   return (
     <div className="shop-table">
+      <div className="shop-buttons">
+        <Button
+          variant="contained"
+          color="primary"
+          className="shop-button save"
+          onClick={onClipBoard}
+        >
+          {clipboardText === window.location.href ? 'COPYED' : 'COPY'}
+        </Button>
+        <Button
+          variant="contained"
+          color="primary"
+          className="shop-button reset"
+          onClick={() => {
+            dispatch(resetFilters(true));
+          }}
+        >
+          Reset
+        </Button>
+      </div>
       <div className="shop-sort">
         <div className="sort-options">
           <SelectSmall />

@@ -126,7 +126,7 @@ export const setProductsSortOptions = createAction<RootState['sort']>(
 );
 export const deleteProductFromCart = createAction<number>('product/deleteProductFromCart');
 export const updateCart = createAction<CartEntry>('product/updateCart');
-export const deleteFilters = createAction<ProductType[]>('product/deleteFilters');
+export const resetFilters = createAction<boolean>('product/resetFilters');
 export const checkFiltersFormat = createAction<string>('product/checkFiltersFormat');
 export const checkFiltersCategory = createAction<string>('product/checkFiltersCategory');
 export const checkPriceSlider = createAction<RangeMinMax>('product/checkPriceSlider');
@@ -216,6 +216,18 @@ const productsReducer = createReducer(initialState, (builder) => {
     })
     .addCase(checkModal, (state, action) => {
       state.modal = action.payload;
+    })
+    .addCase(resetFilters, (state, action) => {
+      if (action.payload) {
+        state.filters.format.currentValue = [];
+        state.filters.genre.currentValue = [];
+        state.sort.by = 'none';
+        state.sort.direction = 'asc';
+        state.filters.search = '';
+        state.view = 'large';
+        state.filters.year.value = minMaxYear;
+        state.filters.price.value = minMaxPrice;
+      }
     });
 });
 export const selectProducts: Selector<RootState, RootState['products']> = createSelector(
