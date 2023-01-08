@@ -1,4 +1,4 @@
-import React, { FC, PropsWithChildren, useState } from 'react';
+import React, { FC, PropsWithChildren } from 'react';
 import { ProductType } from '../../../types';
 import { TableItemBig } from './tableItemBig';
 import ViewModuleIcon from '@mui/icons-material/ViewModule';
@@ -24,11 +24,10 @@ type ShopTableProps = {
   items: ProductType[];
 };
 const ShopTable: FC<PropsWithChildren<ShopTableProps>> = ({ items: products }) => {
+  const dispatch = useDispatch();
   const viewSize = useSelector(selectView);
   const view = ItemViewType.Large === viewSize ? ItemViewType.Large : ItemViewType.Small;
-  const dispatch = useDispatch();
-  const [itemView, setItemView] = useState(view);
-  const ItemView = itemViewComponentMapping[itemView] ?? TableItemBig;
+  const ItemView = itemViewComponentMapping[view] ?? TableItemBig;
   return (
     <div className="shop-table">
       <div className="shop-sort">
@@ -47,7 +46,6 @@ const ShopTable: FC<PropsWithChildren<ShopTableProps>> = ({ items: products }) =
             aria-label="grid"
             onClick={() => {
               dispatch(checkView('large'));
-              setItemView(ItemViewType.Large);
             }}
           >
             <GridViewSharpIcon />
@@ -57,7 +55,6 @@ const ShopTable: FC<PropsWithChildren<ShopTableProps>> = ({ items: products }) =
             aria-label="module"
             onClick={() => {
               dispatch(checkView('small'));
-              setItemView(ItemViewType.Small);
             }}
           >
             <ViewModuleIcon />

@@ -5,12 +5,18 @@ import {
   createSelector,
   Selector,
 } from '@reduxjs/toolkit';
-import { minMaxPrice, minMaxYear } from '../pages/main/components/sortBox';
 import { products } from '../products';
 import { CartEntry, DiscountType, ProductType, RangeMinMax } from '../types';
 
 export const uniqCategory = [...new Set(products.map((item) => item.category))];
 export const uniqFormat = [...new Set(products.map((item) => item.format))];
+const listOfPrices = [...new Set(products.map((item) => item.price))];
+const listOfYears = [...new Set(products.map((item) => item.year))];
+
+export const minMaxPrice: RangeMinMax = [Math.min(...listOfPrices), Math.max(...listOfPrices)];
+export const minMaxYear: RangeMinMax = [Math.min(...listOfYears), Math.max(...listOfYears)];
+const queryString = window.location.search;
+const urlSearchParams = new URLSearchParams(queryString);
 
 export type RootState = {
   products: Record<ProductType['id'], ProductType>;
@@ -52,23 +58,29 @@ const initialState: RootState = {
   filters: {
     genre: {
       allValue: [],
-      currentValue: [],
+      currentValue: urlSearchParams.get('genre')?.split('↕') || [],
     },
     format: {
       allValue: [],
-      currentValue: [],
+      currentValue: urlSearchParams.get('format')?.split('↕') || [],
     },
     year: {
-      value: minMaxYear,
+      value: [
+        Number(urlSearchParams?.get('year')?.split('↕')[0]) || minMaxYear[0],
+        Number(urlSearchParams?.get('year')?.split('↕')[1]) || minMaxYear[1],
+      ],
     },
     price: {
-      value: minMaxPrice,
+      value: [
+        Number(urlSearchParams?.get('price')?.split('↕')[0]) || minMaxPrice[0],
+        Number(urlSearchParams?.get('price')?.split('↕')[1]) || minMaxPrice[1],
+      ],
     },
-    search: '',
+    search: urlSearchParams.get('search') || '',
   },
   sort: {
-    by: 'none',
-    direction: 'asc',
+    by: (urlSearchParams.get('sort')?.split('-')[0] as 'price' | 'name' | 'none') || 'none',
+    direction: (urlSearchParams.get('sort')?.split('-')[1] as 'asc' | 'desc') || 'asc',
   },
   cart: {
     entries: [],
@@ -82,7 +94,7 @@ const initialState: RootState = {
       current: [],
     },
   },
-  view: 'large',
+  view: urlSearchParams.get('view') || 'large',
   modal: false,
 };
 
@@ -134,8 +146,8 @@ const productsReducer = createReducer(initialState, (builder) => {
       state.products = Object.fromEntries((action.payload ?? []).map((p) => [p.id, p]));
       state.filters.format.allValue = [...uniqFormat];
       state.filters.genre.allValue = [...uniqCategory];
-      if (localStorage.getItem('cart')) {
-        state.cart.entries = JSON.parse(localStorage.getItem('cart') || '{}');
+      if (localStorage.getItem('disco_store_cart')) {
+        state.cart.entries = JSON.parse(localStorage.getItem('disco_store_cart') || '{}');
       }
     })
     .addCase(setProductsSortOptions, (state, action) => {
@@ -154,7 +166,7 @@ const productsReducer = createReducer(initialState, (builder) => {
         entry.count += count;
       }
       state.cart.entries = state.cart.entries.filter((p) => p.count > 0);
-      localStorage.setItem('cart', JSON.stringify(state.cart.entries));
+      localStorage.setItem('disco_store_cart', JSON.stringify(state.cart.entries));
     })
     .addCase(checkFiltersFormat, (state, action) => {
       const chexboxValue = action.payload;
