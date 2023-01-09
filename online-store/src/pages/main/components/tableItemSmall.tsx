@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { Product } from '../../../types';
+import { ProductType } from '../../../types';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
@@ -8,7 +8,7 @@ import Typography from '@mui/material/Typography';
 import { Button, CardActionArea, CardActions } from '@mui/material';
 import { AddButton } from './addButton';
 
-export const TableItemSmall = ({ thumbnail, group, id }: Product) => {
+export const TableItemSmall = React.memo(({ thumbnail, group, id, album }: ProductType) => {
   const navigate = useNavigate();
   return (
     <Card className="table-item small">
@@ -26,23 +26,17 @@ export const TableItemSmall = ({ thumbnail, group, id }: Product) => {
           alt="music cd/vin"
         />
         <CardContent>
+          <Typography gutterBottom variant="h5" component="div">
+            {album}
+          </Typography>
           <Typography gutterBottom variant="body2" color="text.secondary">
             {group}
           </Typography>
         </CardContent>
       </CardActionArea>
-      <CardActions className="card-action">
-        <Button
-          size="small"
-          color="primary"
-          onClick={() => {
-            navigate(`/product/${id}`);
-          }}
-        >
-          DETAILS
-        </Button>
+      <CardActions className="card-action small">
         <AddButton id={id} />
       </CardActions>
     </Card>
   );
-};
+});

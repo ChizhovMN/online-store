@@ -1,32 +1,53 @@
-import { Button } from '@mui/material';
-import React, { useState, FC, PropsWithChildren } from 'react';
-import { products } from '../../products';
-// import { useDispatch, useSelector } from 'react-redux';
-// import { filterByGroupsAC } from '../../store/actionCreators';
-// import { products } from '../../products';
-// import { productsSelector } from '../../store/selector';
+import React, { useEffect } from 'react';
+import { useSelector } from 'react-redux';
+import { useSearchParams } from 'react-router-dom';
+import {
+  minMaxPrice,
+  minMaxYear,
+  selectFieldSearch,
+  selectFilter,
+  selectSort,
+  selectView,
+} from '../../store/store';
 import '../main/main.css';
 import { ShopTable } from './components/shopTable';
 import { CheckboxGenre } from './components/sortBox';
-type MainProps = {
-  cartTotal: number;
-  setCart: React.Dispatch<React.SetStateAction<number>>;
-};
-const Main: FC<PropsWithChildren<MainProps>> = ({ cartTotal, setCart }) => {
-  const [filterProducts, setFilterProducts] = useState(products);
-  // const products = useSelector(productsSelector);
-  // const dispatch = useDispatch();
-  // console.log(dispatch);
-  // const filterProducts = [...products];
-  // console.log('sortproducts', filterProducts);
-  // function filterBy41() {
-  //   dispatch(filterByGroupsAC('Sum 41'));
-  // }
+
+const Main = () => {
+  const filterProducts = useSelector(selectFieldSearch);
+  const filter = useSelector(selectFilter);
+  const view = useSelector(selectView);
+  const sort = useSelector(selectSort);
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  useEffect(() => {
+    const newSearchParams = new URLSearchParams(searchParams);
+    filter.format.currentValue.length > 0
+      ? newSearchParams.set('format', filter.format.currentValue.join('↕'))
+      : newSearchParams.delete('format');
+    filter.genre.currentValue.length > 0
+      ? newSearchParams.set('genre', filter.genre.currentValue.join('↕'))
+      : newSearchParams.delete('genre');
+    sort.by !== 'none'
+      ? newSearchParams.set('sort', sort.by + '-' + sort.direction)
+      : newSearchParams.delete('sort');
+    filter.search.length > 0
+      ? newSearchParams.set('search', filter.search)
+      : newSearchParams.delete('search');
+    filter.year.value[0] !== minMaxYear[0] || filter.year.value[1] !== minMaxYear[1]
+      ? newSearchParams.set('year', filter.year.value.join('↕'))
+      : newSearchParams.delete('year');
+    filter.price.value[0] !== minMaxPrice[0] || filter.price.value[1] !== minMaxPrice[1]
+      ? newSearchParams.set('price', filter.price.value.join('↕'))
+      : newSearchParams.delete('price');
+    newSearchParams.set('view', view);
+    setSearchParams(newSearchParams);
+  }, [filter, sort, view, searchParams, setSearchParams]);
+
   return (
     <div className="shop">
-      <Button onClick={() => setCart(cartTotal + 1)}>CLICK</Button>
-      <CheckboxGenre sortItems={products} />
-      <ShopTable items={products} />
+      <CheckboxGenre />
+      <ShopTable items={filterProducts} />
     </div>
   );
 };

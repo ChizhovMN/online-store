@@ -1,88 +1,64 @@
 // import * as React from 'react';
-import React, { useState, FC, PropsWithChildren } from 'react';
+import React from 'react';
 import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
-import { products } from '../../../products';
 import { RangeSlider } from './dualSliders';
 import './sortBox.css';
-import { Product, RangeMinMax } from '../../../types';
+import {
+  checkFiltersFormat,
+  checkFiltersCategory,
+  uniqCategory,
+  uniqFormat,
+  selectFilter,
+  minMaxPrice,
+  minMaxYear,
+} from '../../../store/store';
+import { useDispatch, useSelector } from 'react-redux';
 
-type SortTableProps = {
-  sortItems: Product[];
-};
-const minMaxPrice: RangeMinMax = [
-  Math.min(...new Set(products.map((item) => item.price))),
-  Math.max(...new Set(products.map((item) => item.price))),
-];
-const minMaxYear: RangeMinMax = [
-  Math.min(...new Set(products.map((item) => item.year))),
-  Math.max(...new Set(products.map((item) => item.year))),
-];
-export const CheckboxGenre: FC<PropsWithChildren<SortTableProps>> = ({
-  sortItems: sortProducts,
-}) => {
-  const [checkBox, setCheckBox] = useState({});
-  // const [userinfo, setUserInfo] = useState({
-  // genres: [],
-  // });
-  // const handleChange = (e: { target: { value: unknown; checked: unknown } }) => {
-  // Destructuring
-  // const { value, checked } = e.target;
-  // const { genres } = userinfo;
-
-  // console.log(`${value} is ${checked}`);
-
-  // Case 1 : The user checks the box
-  // if (checked) {
-  //   setUserInfo({
-  //     genres: [...genres, value],
-  //   });
-  // }
-  // Case 2  : The user unchecks the box
-  // else {
-  // setUserInfo({
-  // genres: genres.filter((e) => e !== value),
-  // });
-  // }
-  // };
-  const uniqCategory = [...new Set(products.map((item) => item.category))];
-  const uniqFormat = [...new Set(products.map((item) => item.format))];
-
+export const CheckboxGenre = () => {
+  const dispatch = useDispatch();
+  const filters = useSelector(selectFilter);
+  const onChange = (event: React.SyntheticEvent<Element, Event>) => {
+    const target = event.target as HTMLInputElement;
+    dispatch(checkFiltersFormat(target.value));
+    dispatch(checkFiltersCategory(target.value));
+  };
   return (
     <div className="sort-box">
-      <FormGroup className="checkBox-format">
-        <h3>Format</h3>
-        {uniqFormat.map((el) => (
-          <FormControlLabel key={el} control={<Checkbox value={el} />} label={el} />
-        ))}
-      </FormGroup>
       <div className="checkBox-category">
-        <h3 className="titleGenre">Genre</h3>
+        <div className="genre_head">Genre</div>
         <FormGroup className="checkList">
-          {uniqCategory.map((el) => (
+          {uniqCategory.map((key) => (
             <FormControlLabel
               className="checkLabel"
-              key={el}
-              control={<Checkbox value={el} />}
-              label={el}
+              name="genre"
+              key={key}
+              control={<Checkbox value={key} />}
+              checked={filters.genre.currentValue.includes(key) ? true : false}
+              label={key}
+              onChange={onChange}
             />
           ))}
         </FormGroup>
       </div>
+      <FormGroup id="checkBox-format">
+        <div className="format_head">Format</div>
+        {uniqFormat.map((key) => (
+          <FormControlLabel
+            key={key}
+            className="checkLabel"
+            name="format"
+            control={<Checkbox value={key} />}
+            checked={filters.format.currentValue.includes(key) ? true : false}
+            label={key}
+            onChange={onChange}
+          />
+        ))}
+      </FormGroup>
       <div className="sliders">
-        <RangeSlider
-          range={minMaxPrice}
-          currencySymbol={'$'}
-          filterItemsProperty={sortProducts}
-          property={'price'}
-        />
-        <RangeSlider
-          range={minMaxYear}
-          currencySymbol={''}
-          filterItemsProperty={sortProducts}
-          property={'year'}
-        />
+        <RangeSlider range={minMaxPrice} currencySymbol={'$'} property={'price'} />
+        <RangeSlider range={minMaxYear} currencySymbol={''} property={'year'} />
       </div>
     </div>
   );
