@@ -159,6 +159,7 @@ const productsReducer = createReducer(initialState, (builder) => {
     .addCase(deleteProductFromCart, (state, action) => {
       const productId = action.payload;
       state.cart.entries = state.cart.entries.filter((p) => p.productId !== productId);
+      localStorage.setItem('disco_store_cart', JSON.stringify(state.cart.entries));
     })
     .addCase(updateCart, (state, action) => {
       const { productId, count } = action.payload;

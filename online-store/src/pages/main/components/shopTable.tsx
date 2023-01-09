@@ -28,9 +28,9 @@ const ShopTable: FC<PropsWithChildren<ShopTableProps>> = ({ items: products }) =
   const dispatch = useDispatch();
   const viewSize = useSelector(selectView);
   const [clipboardText, setClipboardText] = useState('');
-  const onClipBoard = () => {
+  const onClipBoard = async () => {
     clipboardText != window.location.href ? setClipboardText(window.location.href) : clipboardText;
-    navigator.clipboard.writeText(clipboardText);
+    await navigator.clipboard.writeText(clipboardText);
   };
   const view = ItemViewType.Large === viewSize ? ItemViewType.Large : ItemViewType.Small;
   const ItemView = itemViewComponentMapping[view] ?? TableItemBig;
@@ -43,7 +43,7 @@ const ShopTable: FC<PropsWithChildren<ShopTableProps>> = ({ items: products }) =
           className="shop-button save"
           onClick={onClipBoard}
         >
-          {clipboardText === window.location.href ? 'COPYED' : 'COPY'}
+          {clipboardText === window.location.href ? 'COPiED' : 'COPY'}
         </Button>
         <Button
           variant="contained"
