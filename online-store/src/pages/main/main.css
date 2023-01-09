@@ -1,0 +1,68 @@
+.shop-table {
+  display: flex;
+  text-align: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.shop-sort {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+
+.sort-options,
+.products-found,
+.search,
+.size-btn-wrapper {
+  flex-grow: 1;
+  justify-content: center;
+}
+
+.table-item {
+  flex-grow: 1;
+  cursor: pointer;
+  max-width: 300px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.table-item.small {
+  max-width: 200px;
+}
+
+.card-action {
+  justify-content: space-between;
+  margin-top: auto;
+}
+
+.card-action.small {
+  justify-content: flex-end;
+}
+
+.button-group {
+  margin: 0 !important;
+}
+
+.not-found {
+  flex-grow: 1;
+  max-height: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.shop-buttons {
+  display: flex;
+  gap: 1rem;
+  margin: auto;
+}
+
+.shop-button {
+  width: 50%;
+}
