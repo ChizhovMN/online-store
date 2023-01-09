@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import './modal.css';
 import { TextField } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
-import { checkModal, refreshCart, selectModal } from '../store/store';
+import { checkModal, refreshCart, resetFilters, selectModal } from '../store/store';
 
 const style = {
   position: 'absolute' as const,
@@ -371,6 +371,8 @@ export default function BasicModal() {
                 onClick={(event) => {
                   event.preventDefault();
                   setTimerActive(!timerActive);
+                  dispatch(resetFilters(true));
+                  localStorage.setItem('disco_store_cart', '');
                 }}
               >
                 BUY

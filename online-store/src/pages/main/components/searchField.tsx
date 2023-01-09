@@ -7,10 +7,8 @@ import { checkSearchField, selectFilter } from '../../../store/store';
 export default function SearchField() {
   const dispatch = useDispatch();
   const searchFilter = useSelector(selectFilter);
-  const [search, setSearch] = React.useState(searchFilter.search ? searchFilter.search : '');
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     event.preventDefault();
-    setSearch(event.target.value);
     dispatch(checkSearchField(event.target.value));
   };
   return (
@@ -26,7 +24,7 @@ export default function SearchField() {
         id="outlined-search"
         label="Search product"
         type="search"
-        value={search}
+        value={searchFilter.search}
         onChange={handleChange}
       />
     </Box>
