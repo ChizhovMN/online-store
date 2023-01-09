@@ -15,14 +15,14 @@ export const Header = () => {
     <header className="header">
       <div className="header-wrapper">
         <div className="header-logo">
-          <Link to="/" className="logo-link">
+          <Link to="/online-store/" className="logo-link">
             <img src={logo} className="logo-image" alt="logo" />
             Disco store
           </Link>
         </div>
         <CountCart />
         <div className="header-cart">
-          <Link to="/cart" className="cart">
+          <Link to="/online-store/cart" className="cart">
             <CustomizedBadges />
           </Link>
         </div>

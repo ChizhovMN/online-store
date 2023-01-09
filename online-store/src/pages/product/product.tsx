@@ -15,7 +15,7 @@ export function Product() {
   return (
     <>
       <div className="product-path">
-        <Link to="/" className="navigate-link">
+        <Link to="/online-store/" className="navigate-link">
           Disco store
         </Link>
         <KeyboardDoubleArrowRightIcon />

@@ -20,8 +20,8 @@ export function BuyButton() {
         })
       );
     }
-    if (location.pathname !== '/cart') {
-      navigate('/cart');
+    if (location.pathname !== '/online-store/cart') {
+      navigate('/online-store/cart');
     }
     dispatch(checkModal(true));
   };

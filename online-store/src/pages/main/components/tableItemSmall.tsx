@@ -14,7 +14,7 @@ export const TableItemSmall = React.memo(({ thumbnail, group, id, album }: Produ
     <Card className="table-item small">
       <CardActionArea
         onClick={() => {
-          navigate(`/product/${id}`);
+          navigate(`/online-store/product/${id}`);
         }}
       >
         <CardMedia

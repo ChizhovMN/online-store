@@ -21,10 +21,10 @@ export default function App() {
       <Header />
       <main className="main">
         <Routes>
-          <Route path="/" element={<Main />} />
-          <Route path="cart" element={<Cart />} />
-          <Route path="product/:id" element={<Product />} />
-          <Route path="404" element={<Error />} />
+          <Route path="/online-store/" element={<Main />} />
+          <Route path="/online-store/cart" element={<Cart />} />
+          <Route path="/online-store/product/:id" element={<Product />} />
+          <Route path="/online-store/404" element={<Error />} />
           <Route path="*" element={<Navigate to="404" replace />} />
         </Routes>
       </main>

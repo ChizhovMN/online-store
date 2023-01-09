@@ -101,7 +101,7 @@ export default function BasicModal() {
   }, [seconds, timerActive]);
   React.useEffect(() => {
     if (seconds < 1) {
-      navigate('/');
+      navigate('/online-store/');
       dispatch(refreshCart(isValid));
     }
   });

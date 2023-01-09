@@ -24,7 +24,7 @@ export default function BasicModal() {
   const handleClose = () => setOpen(false);
   const func = () => {
     handleOpen();
-    navigate('/cart/');
+    navigate('/online-store/cart/');
   };
 
   return (

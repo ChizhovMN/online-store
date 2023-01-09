@@ -15,7 +15,7 @@ export const TableItemBig = React.memo(
       <Card className="table-item">
         <CardActionArea
           onClick={() => {
-            navigate(`/product/${id}`);
+            navigate(`/online-store/product/${id}`);
           }}
         >
           <CardMedia
@@ -46,7 +46,7 @@ export const TableItemBig = React.memo(
             size="small"
             color="primary"
             onClick={() => {
-              navigate(`/product/${id}`);
+              navigate(`/online-store/product/${id}`);
             }}
           >
             DETAILS
