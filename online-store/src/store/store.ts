@@ -5,12 +5,18 @@ import {
   createSelector,
   Selector,
 } from '@reduxjs/toolkit';
-import { minMaxPrice, minMaxYear } from '../pages/main/components/sortBox';
 import { products } from '../products';
 import { CartEntry, DiscountType, ProductType, RangeMinMax } from '../types';
 
 export const uniqCategory = [...new Set(products.map((item) => item.category))];
 export const uniqFormat = [...new Set(products.map((item) => item.format))];
+const listOfPrices = [...new Set(products.map((item) => item.price))];
+const listOfYears = [...new Set(products.map((item) => item.year))];
+
+export const minMaxPrice: RangeMinMax = [Math.min(...listOfPrices), Math.max(...listOfPrices)];
+export const minMaxYear: RangeMinMax = [Math.min(...listOfYears), Math.max(...listOfYears)];
+const queryString = window.location.search;
+const urlSearchParams = new URLSearchParams(queryString);
 
 export type RootState = {
   products: Record<ProductType['id'], ProductType>;
@@ -38,6 +44,7 @@ export type RootState = {
   cart: {
     entries: CartEntry[];
     chunkLength: number;
+    page: number;
     promo: string;
     discount: {
       all: DiscountType[];
@@ -52,27 +59,34 @@ const initialState: RootState = {
   filters: {
     genre: {
       allValue: [],
-      currentValue: [],
+      currentValue: urlSearchParams.get('genre')?.split('↕') || [],
     },
     format: {
       allValue: [],
-      currentValue: [],
+      currentValue: urlSearchParams.get('format')?.split('↕') || [],
     },
     year: {
-      value: minMaxYear,
+      value: [
+        Number(urlSearchParams?.get('year')?.split('↕')[0]) || minMaxYear[0],
+        Number(urlSearchParams?.get('year')?.split('↕')[1]) || minMaxYear[1],
+      ],
     },
     price: {
-      value: minMaxPrice,
+      value: [
+        Number(urlSearchParams?.get('price')?.split('↕')[0]) || minMaxPrice[0],
+        Number(urlSearchParams?.get('price')?.split('↕')[1]) || minMaxPrice[1],
+      ],
     },
-    search: '',
+    search: urlSearchParams.get('search') || '',
   },
   sort: {
-    by: 'none',
-    direction: 'asc',
+    by: (urlSearchParams.get('sort')?.split('-')[0] as 'price' | 'name' | 'none') || 'none',
+    direction: (urlSearchParams.get('sort')?.split('-')[1] as 'asc' | 'desc') || 'asc',
   },
   cart: {
     entries: [],
-    chunkLength: 5,
+    chunkLength: Number(urlSearchParams?.get('limit')) || 5,
+    page: Number(urlSearchParams?.get('page')) || 1,
     promo: '',
     discount: {
       all: [
@@ -82,7 +96,7 @@ const initialState: RootState = {
       current: [],
     },
   },
-  view: 'large',
+  view: urlSearchParams.get('view') || 'large',
   modal: false,
 };
 
@@ -114,7 +128,7 @@ export const setProductsSortOptions = createAction<RootState['sort']>(
 );
 export const deleteProductFromCart = createAction<number>('product/deleteProductFromCart');
 export const updateCart = createAction<CartEntry>('product/updateCart');
-export const deleteFilters = createAction<ProductType[]>('product/deleteFilters');
+export const resetFilters = createAction<boolean>('product/resetFilters');
 export const checkFiltersFormat = createAction<string>('product/checkFiltersFormat');
 export const checkFiltersCategory = createAction<string>('product/checkFiltersCategory');
 export const checkPriceSlider = createAction<RangeMinMax>('product/checkPriceSlider');
@@ -127,6 +141,7 @@ export const addDiscount = createAction<string>('product/addDiscount');
 export const deleteDiscount = createAction<string>('product/deleteDiscount');
 export const refreshCart = createAction<boolean>('product/refreshCart');
 export const checkModal = createAction<boolean>('product/checkModal');
+export const checkCartPage = createAction<number>('product/checkCartPage');
 
 const productsReducer = createReducer(initialState, (builder) => {
   builder
@@ -134,6 +149,9 @@ const productsReducer = createReducer(initialState, (builder) => {
       state.products = Object.fromEntries((action.payload ?? []).map((p) => [p.id, p]));
       state.filters.format.allValue = [...uniqFormat];
       state.filters.genre.allValue = [...uniqCategory];
+      if (localStorage.getItem('disco_store_cart')) {
+        state.cart.entries = JSON.parse(localStorage.getItem('disco_store_cart') || '{}');
+      }
     })
     .addCase(setProductsSortOptions, (state, action) => {
       state.sort = action.payload;
@@ -151,6 +169,7 @@ const productsReducer = createReducer(initialState, (builder) => {
         entry.count += count;
       }
       state.cart.entries = state.cart.entries.filter((p) => p.count > 0);
+      localStorage.setItem('disco_store_cart', JSON.stringify(state.cart.entries));
     })
     .addCase(checkFiltersFormat, (state, action) => {
       const chexboxValue = action.payload;
@@ -200,6 +219,21 @@ const productsReducer = createReducer(initialState, (builder) => {
     })
     .addCase(checkModal, (state, action) => {
       state.modal = action.payload;
+    })
+    .addCase(resetFilters, (state, action) => {
+      if (action.payload) {
+        state.filters.format.currentValue = [];
+        state.filters.genre.currentValue = [];
+        state.sort.by = 'none';
+        state.sort.direction = 'asc';
+        state.filters.search = '';
+        state.view = 'large';
+        state.filters.year.value = minMaxYear;
+        state.filters.price.value = minMaxPrice;
+      }
+    })
+    .addCase(checkCartPage, (state, action) => {
+      state.cart.page = action.payload;
     });
 });
 export const selectProducts: Selector<RootState, RootState['products']> = createSelector(
@@ -230,6 +264,18 @@ export const selectCartShopProducts: Selector<RootState, CartProduct[]> = create
         id in products ? { ...products[id], quantity } : null
       )
       .filter((x): x is CartProduct => !!x)
+);
+export const selectCartShopChunks = createSelector(
+  [selectCartShopProducts, selectCart],
+  (products, cart) =>
+    products.reduce((acc: Array<CartProduct[]>, item, index) => {
+      const chunkNumber = Math.floor(index / +cart.chunkLength);
+      if (!acc[chunkNumber]) {
+        acc[chunkNumber] = [];
+      }
+      acc[chunkNumber].push(item);
+      return acc;
+    }, [])
 );
 export const selectCartTotal = createSelector([selectCartShopProducts], (products) =>
   products.reduce((acc, { quantity, price }) => acc + quantity * price, 0)

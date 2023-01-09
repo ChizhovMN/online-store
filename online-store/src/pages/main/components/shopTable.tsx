@@ -9,7 +9,8 @@ import { TableItemSmall } from './tableItemSmall';
 import SelectSmall from './selectSort';
 import SearchField from './searchField';
 import { useDispatch, useSelector } from 'react-redux';
-import { checkView, selectView } from '../../../store/store';
+import { checkView, resetFilters, selectView } from '../../../store/store';
+import { Button } from '@mui/material';
 
 const ItemViewType = {
   Large: 'large',
@@ -24,13 +25,37 @@ type ShopTableProps = {
   items: ProductType[];
 };
 const ShopTable: FC<PropsWithChildren<ShopTableProps>> = ({ items: products }) => {
-  const viewSize = useSelector(selectView);
-  const view = ItemViewType.Large === viewSize ? ItemViewType.Large : ItemViewType.Small;
   const dispatch = useDispatch();
-  const [itemView, setItemView] = useState(view);
-  const ItemView = itemViewComponentMapping[itemView] ?? TableItemBig;
+  const viewSize = useSelector(selectView);
+  const [clipboardText, setClipboardText] = useState('');
+  const onClipBoard = () => {
+    clipboardText != window.location.href ? setClipboardText(window.location.href) : clipboardText;
+    navigator.clipboard.writeText(clipboardText);
+  };
+  const view = ItemViewType.Large === viewSize ? ItemViewType.Large : ItemViewType.Small;
+  const ItemView = itemViewComponentMapping[view] ?? TableItemBig;
   return (
     <div className="shop-table">
+      <div className="shop-buttons">
+        <Button
+          variant="contained"
+          color="primary"
+          className="shop-button save"
+          onClick={onClipBoard}
+        >
+          {clipboardText === window.location.href ? 'COPYED' : 'COPY'}
+        </Button>
+        <Button
+          variant="contained"
+          color="primary"
+          className="shop-button reset"
+          onClick={() => {
+            dispatch(resetFilters(true));
+          }}
+        >
+          Reset
+        </Button>
+      </div>
       <div className="shop-sort">
         <div className="sort-options">
           <SelectSmall />
@@ -47,7 +72,6 @@ const ShopTable: FC<PropsWithChildren<ShopTableProps>> = ({ items: products }) =
             aria-label="grid"
             onClick={() => {
               dispatch(checkView('large'));
-              setItemView(ItemViewType.Large);
             }}
           >
             <GridViewSharpIcon />
@@ -57,7 +81,6 @@ const ShopTable: FC<PropsWithChildren<ShopTableProps>> = ({ items: products }) =
             aria-label="module"
             onClick={() => {
               dispatch(checkView('small'));
-              setItemView(ItemViewType.Small);
             }}
           >
             <ViewModuleIcon />

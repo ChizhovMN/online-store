@@ -3,8 +3,13 @@ import Box from '@mui/material/Box';
 import Slider from '@mui/material/Slider';
 import { ProductType, RangeMinMax } from '../../../types';
 import { useDispatch, useSelector } from 'react-redux';
-import { checkPriceSlider, checkSliderYear, selectFilter } from '../../../store/store';
-import { minMaxPrice, minMaxYear } from './sortBox';
+import {
+  checkPriceSlider,
+  checkSliderYear,
+  minMaxPrice,
+  minMaxYear,
+  selectFilter,
+} from '../../../store/store';
 
 function valuetext(value: number) {
   return `${value}`;
@@ -36,11 +41,15 @@ export const RangeSlider: FC<PropsWithChildren<RangeSliderProps>> = ({
   const marks = [
     {
       value: minMaxValues[0],
-      label: `${value[0]}${currencySymbol}`,
+      label:
+        (minMaxPrice[0] <= value[0] && value[1] <= minMaxPrice[1] ? price[0] : year[0]) +
+        `${currencySymbol}`,
     },
     {
       value: minMaxValues[1],
-      label: `${value[1]}${currencySymbol}`,
+      label:
+        (minMaxPrice[0] <= value[0] && value[1] <= minMaxPrice[1] ? price[1] : year[1]) +
+        `${currencySymbol}`,
     },
   ];
   return (
