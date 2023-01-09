@@ -44,6 +44,7 @@ export type RootState = {
   cart: {
     entries: CartEntry[];
     chunkLength: number;
+    page: number;
     promo: string;
     discount: {
       all: DiscountType[];
@@ -84,7 +85,8 @@ const initialState: RootState = {
   },
   cart: {
     entries: [],
-    chunkLength: 5,
+    chunkLength: Number(urlSearchParams?.get('limit')) || 5,
+    page: Number(urlSearchParams?.get('page')) || 1,
     promo: '',
     discount: {
       all: [
@@ -139,6 +141,7 @@ export const addDiscount = createAction<string>('product/addDiscount');
 export const deleteDiscount = createAction<string>('product/deleteDiscount');
 export const refreshCart = createAction<boolean>('product/refreshCart');
 export const checkModal = createAction<boolean>('product/checkModal');
+export const checkCartPage = createAction<number>('product/checkCartPage');
 
 const productsReducer = createReducer(initialState, (builder) => {
   builder
@@ -228,6 +231,9 @@ const productsReducer = createReducer(initialState, (builder) => {
         state.filters.year.value = minMaxYear;
         state.filters.price.value = minMaxPrice;
       }
+    })
+    .addCase(checkCartPage, (state, action) => {
+      state.cart.page = action.payload;
     });
 });
 export const selectProducts: Selector<RootState, RootState['products']> = createSelector(
@@ -258,6 +264,18 @@ export const selectCartShopProducts: Selector<RootState, CartProduct[]> = create
         id in products ? { ...products[id], quantity } : null
       )
       .filter((x): x is CartProduct => !!x)
+);
+export const selectCartShopChunks = createSelector(
+  [selectCartShopProducts, selectCart],
+  (products, cart) =>
+    products.reduce((acc: Array<CartProduct[]>, item, index) => {
+      const chunkNumber = Math.floor(index / +cart.chunkLength);
+      if (!acc[chunkNumber]) {
+        acc[chunkNumber] = [];
+      }
+      acc[chunkNumber].push(item);
+      return acc;
+    }, [])
 );
 export const selectCartTotal = createSelector([selectCartShopProducts], (products) =>
   products.reduce((acc, { quantity, price }) => acc + quantity * price, 0)
