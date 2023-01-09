@@ -25,7 +25,7 @@ export default function App() {
           <Route path="/online-store/cart" element={<Cart />} />
           <Route path="/online-store/product/:id" element={<Product />} />
           <Route path="/online-store/404" element={<Error />} />
-          <Route path="*" element={<Navigate to="404" replace />} />
+          <Route path="*" element={<Navigate to="/online-store/404" replace />} />
         </Routes>
       </main>
       <Footer />
