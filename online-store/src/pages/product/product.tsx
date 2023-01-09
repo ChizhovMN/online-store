@@ -2,12 +2,10 @@ import React, { useState } from 'react';
 import { products } from '../../products';
 import { useParams, Link } from 'react-router-dom';
 import Stack from '@mui/material/Stack';
-import Button from '@mui/material/Button';
 import KeyboardDoubleArrowRightIcon from '@mui/icons-material/KeyboardDoubleArrowRight';
 import '../product/product.css';
 import { AddButton } from '../main/components/addButton';
 import { BuyButton } from '../buyButton';
-import BasicModal from '../modal';
 
 export function Product() {
   const { id } = useParams();
@@ -69,8 +67,7 @@ export function Product() {
           </div>
           <div className="product-btn">
             <Stack spacing={4} direction="row">
-              {/* <BuyButton /> */}
-              <BasicModal />
+              <BuyButton />
               <AddButton id={Number(id)} />
             </Stack>
           </div>

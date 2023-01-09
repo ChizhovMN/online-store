@@ -45,6 +45,7 @@ export type RootState = {
     };
   };
   view: string;
+  modal: boolean;
 };
 const initialState: RootState = {
   products: [],
@@ -82,6 +83,7 @@ const initialState: RootState = {
     },
   },
   view: 'large',
+  modal: false,
 };
 
 const checkboxValueChecker = (
@@ -124,6 +126,7 @@ export const checkDiscount = createAction<string>('product/checkDiscount');
 export const addDiscount = createAction<string>('product/addDiscount');
 export const deleteDiscount = createAction<string>('product/deleteDiscount');
 export const refreshCart = createAction<boolean>('product/refreshCart');
+export const checkModal = createAction<boolean>('product/checkModal');
 
 const productsReducer = createReducer(initialState, (builder) => {
   builder
@@ -194,6 +197,9 @@ const productsReducer = createReducer(initialState, (builder) => {
       if (action.payload) {
         state.cart.entries = [];
       }
+    })
+    .addCase(checkModal, (state, action) => {
+      state.modal = action.payload;
     });
 });
 export const selectProducts: Selector<RootState, RootState['products']> = createSelector(
@@ -301,6 +307,10 @@ export const selectFieldSearch = createSelector([selectRange, selectFilter], (pr
   );
   return searchProducts;
 });
+export const selectModal: Selector<RootState, RootState['modal']> = createSelector(
+  [(st: RootState) => st.modal],
+  (modal) => modal
+);
 export const store = configureStore({ reducer: productsReducer });
 
 export type AppDispatch = typeof store.dispatch;

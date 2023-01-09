@@ -5,8 +5,8 @@ import Modal from '@mui/material/Modal';
 import { useNavigate } from 'react-router-dom';
 import './modal.css';
 import { TextField } from '@mui/material';
-import { useDispatch } from 'react-redux';
-import { refreshCart } from '../store/store';
+import { useDispatch, useSelector } from 'react-redux';
+import { checkModal, refreshCart, selectModal } from '../store/store';
 
 const style = {
   position: 'absolute' as const,
@@ -70,9 +70,9 @@ const checkCardTypes = (cardNum: string) => {
 export default function BasicModal() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [open, setOpen] = React.useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+  const modalChecker = useSelector(selectModal);
+  const handleOpen = () => dispatch(checkModal(true));
+  const handleClose = () => dispatch(checkModal(false));
   const [nameValid, setName] = React.useState({ value: '', valid: false });
   const [phoneValid, setPhone] = React.useState({ value: '', valid: false });
   const [adressValid, setAdress] = React.useState({ value: '', valid: false });
@@ -107,11 +107,6 @@ export default function BasicModal() {
   });
   const fields = [nameValid, phoneValid, adressValid, emailValid, cardNumber, cardDate, cardCVV];
   const isValid = fields.every((item) => item.valid);
-
-  const func = () => {
-    handleOpen();
-    navigate('/cart/');
-  };
   const nameValidate = (event: React.ChangeEvent<HTMLInputElement>) => {
     const newName = event.target.value;
     if (
@@ -216,9 +211,9 @@ export default function BasicModal() {
   };
   return (
     <div>
-      <Button onClick={func}>BUY NOW</Button>
+      <Button onClick={handleOpen}>BUY NOW</Button>
       <Modal
-        open={open}
+        open={modalChecker}
         onClose={handleClose}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
