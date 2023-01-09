@@ -4,7 +4,7 @@ import { styled } from '@mui/material/styles';
 import IconButton from '@mui/material/IconButton';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { selectCartShopProducts } from '../../store/store';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 <Badge
   anchorOrigin={{
@@ -22,7 +22,6 @@ const StyledBadge = styled(Badge)<BadgeProps>(({ theme }) => ({
 }));
 
 export default function CustomizedBadges() {
-  const dispatch = useDispatch();
   const cartItems = useSelector(selectCartShopProducts);
   const amountItems = cartItems.reduce((acc, item) => acc + item.quantity, 0);
   return (

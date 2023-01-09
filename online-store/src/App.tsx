@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { useDispatch, connect, useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import './App.css';
 import { Header } from './pages/header';
 import { Footer } from './pages/footer';
@@ -26,7 +26,6 @@ export default function App() {
           <Route path="product/:id" element={<Product />} />
           <Route path="404" element={<Error />} />
           <Route path="*" element={<Navigate to="404" replace />} />
-          {/* TODO:  check url with render and redirect*/}
         </Routes>
       </main>
       <Footer />
