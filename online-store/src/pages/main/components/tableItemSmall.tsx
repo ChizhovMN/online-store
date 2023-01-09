@@ -1,29 +1,16 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { Products } from '../../../types';
+import { ProductType } from '../../../types';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { Button, CardActionArea, CardActions } from '@mui/material';
+import { AddButton } from './addButton';
 
-export const TableItemSmall = ({ thumbnail, group, album, year, format, price, id }: Products) => {
+export const TableItemSmall = React.memo(({ thumbnail, group, id, album }: ProductType) => {
   const navigate = useNavigate();
   return (
-    // <div
-    //   key={id}
-    //   className="table-item"
-    //   onClick={() => {
-    //     navigate(`/product/${id}`);
-    //   }}
-    // >
-    //   <figure className="figure-item">
-    //     <img className="table-image small" src={thumbnail} alt="music" />
-    //   </figure>
-    //   <Link to="cart" className="item-btn">
-    //     CART
-    //   </Link>
-    // </div>
     <Card className="table-item small">
       <CardActionArea
         onClick={() => {
@@ -39,19 +26,17 @@ export const TableItemSmall = ({ thumbnail, group, album, year, format, price, i
           alt="music cd/vin"
         />
         <CardContent>
+          <Typography gutterBottom variant="h5" component="div">
+            {album}
+          </Typography>
           <Typography gutterBottom variant="body2" color="text.secondary">
             {group}
           </Typography>
         </CardContent>
       </CardActionArea>
-      <CardActions>
-        <Link to="cart" className="item-btn">
-          CART
-        </Link>
-        <Button size="small" color="primary">
-          Add
-        </Button>
+      <CardActions className="card-action small">
+        <AddButton id={id} />
       </CardActions>
     </Card>
   );
-};
+});

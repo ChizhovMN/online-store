@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, connect, useSelector } from 'react-redux';
 import './App.css';
 import { Header } from './pages/header';
 import { Footer } from './pages/footer';
@@ -7,8 +8,14 @@ import { Main } from './pages/main/main';
 import { Product } from './pages/product/product';
 import { Error } from './pages/404/404';
 import { Routes, Route, Navigate } from 'react-router-dom';
+import { products as initialProducts } from './products';
+import { loadInitialProductsData } from './store/store';
 
-function App() {
+export default function App() {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(loadInitialProductsData(initialProducts));
+  }, [dispatch]);
   return (
     <>
       <Header />
@@ -26,5 +33,3 @@ function App() {
     </>
   );
 }
-
-export default App;

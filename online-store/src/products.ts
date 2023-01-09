@@ -1,5 +1,5 @@
-import { Products } from './types';
-export const products: Products[] = [
+import { ProductType } from './types';
+export const products: ProductType[] = [
   {
     id: 1,
     group: 'Sum 41',
@@ -593,7 +593,7 @@ export const products: Products[] = [
     album: 'Back To Black',
     year: 2018,
     price: 62.99,
-    format: 'CD',
+    format: 'Vinyl',
     category: 'R&B',
     trackList: [
       'Rehab',
@@ -622,7 +622,7 @@ export const products: Products[] = [
     album: 'Evolve',
     year: 2017,
     price: 63.99,
-    format: 'CD',
+    format: 'Vinyl',
     category: 'R&B',
     trackList: [
       "I Don't Know Why",
@@ -651,7 +651,7 @@ export const products: Products[] = [
     album: 'Back in Black',
     year: 2009,
     price: 60.99,
-    format: 'CD',
+    format: 'Vinyl',
     category: 'Rock',
     trackList: [
       'Hells Bells',
@@ -679,7 +679,7 @@ export const products: Products[] = [
     album: 'Simulation Theory',
     year: 2018,
     price: 61.99,
-    format: 'CD',
+    format: 'Vinyl',
     category: 'Rock',
     trackList: [
       'Algorithm',
@@ -706,7 +706,7 @@ export const products: Products[] = [
     album: 'Meteora',
     year: 2016,
     price: 63.49,
-    format: 'CD',
+    format: 'Vinyl',
     category: 'Rock',
     trackList: [
       'Foreword',
@@ -737,7 +737,7 @@ export const products: Products[] = [
     album: 'Control',
     year: 2016,
     price: 62.49,
-    format: 'CD',
+    format: 'Vinyl',
     category: 'Indie Rock',
     trackList: [
       'Do I Ever',
@@ -766,7 +766,7 @@ export const products: Products[] = [
     album: 'Solar Power',
     year: 2016,
     price: 61.49,
-    format: 'CD',
+    format: 'Vinyl',
     category: 'Indie Pop',
     trackList: [
       'The Path',
@@ -796,7 +796,7 @@ export const products: Products[] = [
     album: 'Villains',
     year: 2017,
     price: 61.49,
-    format: 'CD',
+    format: 'Vinyl',
     category: 'Indie Rock',
     trackList: [
       "Feet Don't Fail Me",
@@ -824,7 +824,7 @@ export const products: Products[] = [
     album: 'AM',
     year: 2013,
     price: 62.49,
-    format: 'CD',
+    format: 'Vinyl',
     category: 'Indie Rock',
     trackList: [
       'Do I Wanna Know?',
@@ -854,7 +854,7 @@ export const products: Products[] = [
     album: 'Alvvays',
     year: 2020,
     price: 60.49,
-    format: 'CD',
+    format: 'Vinyl',
     category: 'Indie Rock',
     trackList: [
       'Adult Diversion',
@@ -881,7 +881,7 @@ export const products: Products[] = [
     album: 'Is This It',
     year: 2020,
     price: 59.99,
-    format: 'CD',
+    format: 'Vinyl',
     category: 'Indie Rock',
     trackList: [
       'Is This It',
@@ -910,7 +910,7 @@ export const products: Products[] = [
     album: 'Tranquility Base Hotel & Casino',
     year: 2018,
     price: 61.99,
-    format: 'CD',
+    format: 'Vinyl',
     category: 'Indie Rock',
     trackList: [
       'Star Treatment',
@@ -939,7 +939,7 @@ export const products: Products[] = [
     album: 'The Dark Side Of The Moon',
     year: 2018,
     price: 61.99,
-    format: 'CD',
+    format: 'Vinyl',
     category: 'Indie Rock',
     trackList: [
       'Speak To Me',
@@ -967,7 +967,7 @@ export const products: Products[] = [
     album: 'Sonic Highways',
     year: 2014,
     price: 60.99,
-    format: 'CD',
+    format: 'Vinyl',
     category: 'Alternative Rock',
     trackList: [
       'Something From Nothing',
@@ -993,7 +993,7 @@ export const products: Products[] = [
     album: 'Mr. Bad Guy',
     year: 2019,
     price: 61.99,
-    format: 'CD',
+    format: 'Vinyl',
     category: 'Rock',
     trackList: [
       "Let's Turn It On",
@@ -1022,7 +1022,7 @@ export const products: Products[] = [
     album: 'Bohemian Rhapsody',
     year: 2019,
     price: 63.99,
-    format: 'CD',
+    format: 'Vinyl',
     category: 'Rock',
     trackList: [
       '20th Century Fox Fanfare',
@@ -1062,7 +1062,7 @@ export const products: Products[] = [
     album: 'Take Off Your Pants And Jacket',
     year: 2016,
     price: 63.99,
-    format: 'CD',
+    format: 'Vinyl',
     category: 'Rock',
     trackList: [
       'Anthem Part Two',
@@ -1093,7 +1093,7 @@ export const products: Products[] = [
     album: 'Folie À Deux',
     year: 2018,
     price: 64.99,
-    format: 'CD',
+    format: 'Vinyl',
     category: 'Pop Punk',
     trackList: [
       'Disloyal Order Of Water Buffaloes',
@@ -1124,7 +1124,7 @@ export const products: Products[] = [
     album: 'Smoke + Mirrors',
     year: 2017,
     price: 64.99,
-    format: 'CD',
+    format: 'Vinyl',
     category: 'Alternative Rock',
     trackList: [
       'Shots',
@@ -1159,7 +1159,7 @@ export const products: Products[] = [
     album: "I'm With You",
     year: 2016,
     price: 64.99,
-    format: 'CD',
+    format: 'Vinyl',
     category: 'Rock',
     trackList: [
       'Monarchy Of Roses',
